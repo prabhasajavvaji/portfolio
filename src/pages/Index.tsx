@@ -245,16 +245,24 @@ const PortfolioContent = () => {
               ))}
             </nav>
 
-            {/* Language Switch & Mobile Menu */}
+            {/* Contact Button & Language Switch */}
             <div className="flex items-center space-x-4">
+              <Button
+                onClick={() => scrollToSection('contact')}
+                className="hidden md:flex bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              >
+                <Mail className="w-4 h-4 mr-2" />
+                {language === 'en' ? 'Contact Me' : 'Kontakt'}
+              </Button>
+              
               <div className="flex items-center space-x-2">
-                <span className={`text-sm ${language === 'en' ? 'text-primary' : 'text-muted-foreground'}`}>EN</span>
+                <span className={`text-sm font-medium ${language === 'en' ? 'text-primary' : 'text-muted-foreground'}`}>EN</span>
                 <Switch
                   checked={language === 'de'}
                   onCheckedChange={toggleLanguage}
                   className="data-[state=checked]:bg-primary"
                 />
-                <span className={`text-sm ${language === 'de' ? 'text-primary' : 'text-muted-foreground'}`}>DE</span>
+                <span className={`text-sm font-medium ${language === 'de' ? 'text-primary' : 'text-muted-foreground'}`}>DE</span>
               </div>
               
               <button
@@ -281,6 +289,13 @@ const PortfolioContent = () => {
                     {item.label}
                   </button>
                 ))}
+                <Button
+                  onClick={() => scrollToSection('contact')}
+                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2 rounded-lg mt-4"
+                >
+                  <Mail className="w-4 h-4 mr-2" />
+                  {language === 'en' ? 'Contact Me' : 'Kontakt'}
+                </Button>
               </nav>
             </div>
           )}
@@ -289,7 +304,7 @@ const PortfolioContent = () => {
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-transparent"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-fade-in-up">
             {/* Profile Image */}
@@ -297,7 +312,7 @@ const PortfolioContent = () => {
               <img
                 src="/my_headshot.jpeg"
                 alt="Prabhasa Javvaji"
-                className="w-48 h-48 md:w-56 md:h-56 rounded-full mx-auto object-cover border-4 border-primary animate-glow"
+                className="w-48 h-48 md:w-56 md:h-56 rounded-full mx-auto object-cover border-4 border-primary animate-glow shadow-2xl"
                 onError={(e) => {
                   e.currentTarget.src = "/my_avatar.png";
                 }}
@@ -305,7 +320,7 @@ const PortfolioContent = () => {
             </div>
 
             {/* Hero Content */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-white to-primary bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-white via-primary to-accent bg-clip-text text-transparent">
               {t('hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-primary mb-4 font-semibold">
@@ -324,19 +339,36 @@ const PortfolioContent = () => {
                 href="https://www.linkedin.com/in/prabhasa-javvaji-27b8a61b2/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover-scale"
+                className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg"
               >
                 <Linkedin className="w-6 h-6 text-primary" />
               </a>
               <a
                 href="mailto:Prabhasajavvaji27@gmail.com"
-                className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover-scale"
+                className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg"
               >
                 <Mail className="w-6 h-6 text-primary" />
               </a>
-              <button className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover-scale">
+              <button className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg">
                 <FileText className="w-6 h-6 text-primary" />
               </button>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex justify-center space-x-4 mb-12">
+              <Button
+                onClick={() => scrollToSection('contact')}
+                className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+              >
+                {language === 'en' ? 'Get In Touch' : 'Kontakt aufnehmen'}
+              </Button>
+              <Button
+                onClick={() => scrollToSection('projects')}
+                variant="outline"
+                className="border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+              >
+                {language === 'en' ? 'View Projects' : 'Projekte ansehen'}
+              </Button>
             </div>
 
             {/* Scroll Arrow */}
@@ -351,7 +383,7 @@ const PortfolioContent = () => {
       <section id="about" className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
               {t('about.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -361,17 +393,17 @@ const PortfolioContent = () => {
             
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
+              <div className="text-center p-6 rounded-lg bg-card/50 border border-primary/20 hover:border-primary/50 transition-all hover-lift">
                 <div className="text-4xl font-bold text-primary mb-2">7+</div>
-                <div className="text-muted-foreground">{language === 'en' ? 'Years Experience' : 'Jahre Erfahrung'}</div>
+                <div className="text-muted-foreground font-medium">{language === 'en' ? 'Years Experience' : 'Jahre Erfahrung'}</div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">2</div>
-                <div className="text-muted-foreground">{language === 'en' ? 'Top Companies' : 'Top-Unternehmen'}</div>
+              <div className="text-center p-6 rounded-lg bg-card/50 border border-primary/20 hover:border-primary/50 transition-all hover-lift">
+                <div className="text-4xl font-bold text-accent mb-2">2</div>
+                <div className="text-muted-foreground font-medium">{language === 'en' ? 'Top Companies' : 'Top-Unternehmen'}</div>
               </div>
-              <div className="text-center">
+              <div className="text-center p-6 rounded-lg bg-card/50 border border-primary/20 hover:border-primary/50 transition-all hover-lift">
                 <div className="text-4xl font-bold text-primary mb-2">4</div>
-                <div className="text-muted-foreground">{language === 'en' ? 'Major Projects' : 'Große Projekte'}</div>
+                <div className="text-muted-foreground font-medium">{language === 'en' ? 'Major Projects' : 'Große Projekte'}</div>
               </div>
             </div>
           </div>
@@ -385,7 +417,7 @@ const PortfolioContent = () => {
       <section id="skills" className="py-20 bg-card/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
               {t('skills.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -393,7 +425,7 @@ const PortfolioContent = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Semiconductor Skills */}
-            <Card className="gradient-border hover-lift">
+            <Card className="gradient-border hover-lift bg-card/80 backdrop-blur-sm">
               <CardHeader className="text-center">
                 <Zap className="w-12 h-12 text-primary mx-auto mb-4" />
                 <CardTitle className="text-primary">{t('skills.semiconductor')}</CardTitle>
@@ -401,7 +433,7 @@ const PortfolioContent = () => {
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.semiconductor.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-primary/20 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -410,15 +442,15 @@ const PortfolioContent = () => {
             </Card>
 
             {/* Testing Skills */}
-            <Card className="gradient-border hover-lift">
+            <Card className="gradient-border hover-lift bg-card/80 backdrop-blur-sm">
               <CardHeader className="text-center">
-                <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
-                <CardTitle className="text-primary">{t('skills.testing')}</CardTitle>
+                <Shield className="w-12 h-12 text-accent mx-auto mb-4" />
+                <CardTitle className="text-accent">{t('skills.testing')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.testing.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-accent/20 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -427,7 +459,7 @@ const PortfolioContent = () => {
             </Card>
 
             {/* Programming Skills */}
-            <Card className="gradient-border hover-lift">
+            <Card className="gradient-border hover-lift bg-card/80 backdrop-blur-sm">
               <CardHeader className="text-center">
                 <Code className="w-12 h-12 text-primary mx-auto mb-4" />
                 <CardTitle className="text-primary">{t('skills.programming')}</CardTitle>
@@ -435,7 +467,7 @@ const PortfolioContent = () => {
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.programming.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-primary/20 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -444,15 +476,15 @@ const PortfolioContent = () => {
             </Card>
 
             {/* Quality Skills */}
-            <Card className="gradient-border hover-lift">
+            <Card className="gradient-border hover-lift bg-card/80 backdrop-blur-sm">
               <CardHeader className="text-center">
-                <Database className="w-12 h-12 text-primary mx-auto mb-4" />
-                <CardTitle className="text-primary">{t('skills.quality')}</CardTitle>
+                <Database className="w-12 h-12 text-accent mx-auto mb-4" />
+                <CardTitle className="text-accent">{t('skills.quality')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.quality.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-accent/20 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -625,13 +657,13 @@ const PortfolioContent = () => {
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-card/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
                 {t('contact.title')}
                 <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
               </h2>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 {t('contact.description')}
               </p>
             </div>
