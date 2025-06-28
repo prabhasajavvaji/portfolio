@@ -1,59 +1,114 @@
 
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Play, Video } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const VideoSection = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const { t } = useLanguage();
+
+  const togglePlay = () => {
+    const video = document.getElementById('intro-video') as HTMLVideoElement;
+    if (video) {
+      if (isPlaying) {
+        video.pause();
+      } else {
+        video.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    const video = document.getElementById('intro-video') as HTMLVideoElement;
+    if (video) {
+      video.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-2xl flex items-center gap-2">
-          <Video className="h-6 w-6" />
-          Video Introduction
-        </CardTitle>
-        <CardDescription>
-          Get to know me better through this personal introduction
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="relative aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg overflow-hidden">
-          {/* Placeholder for video - you can replace this with actual video embed */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center space-y-4">
-              <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
-                <Play className="h-8 w-8 text-primary ml-1" />
+    <section className="py-20 bg-card/30">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t('video.title')}
+              <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              {t('video.description')}
+            </p>
+          </div>
+
+          <Card className="gradient-border hover-lift overflow-hidden">
+            <CardContent className="p-0">
+              <div className="relative aspect-video bg-card">
+                <video
+                  id="intro-video"
+                  className="w-full h-full object-cover"
+                  poster="/my_avatar.png"
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  onError={(e) => {
+                    console.log('Video failed to load, showing placeholder');
+                  }}
+                >
+                  <source src="/my_video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+
+                {/* Video overlay with fallback */}
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-transparent">
+                  {/* Placeholder content when video isn't available */}
+                  <div className="text-center text-white">
+                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center animate-glow">
+                      <img
+                        src="/my_avatar.png"
+                        alt="Prabhasa Avatar"
+                        className="w-24 h-24 rounded-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2">Video Introduction</h3>
+                    <p className="text-lg text-gray-300 mb-6">Coming Soon</p>
+                  </div>
+                </div>
+
+                {/* Video Controls */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-black/50 backdrop-blur-sm rounded-lg p-3">
+                  <div className="flex items-center space-x-3">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={togglePlay}
+                      className="text-white hover:text-primary hover:bg-white/20"
+                    >
+                      {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={toggleMute}
+                      className="text-white hover:text-primary hover:bg-white/20"
+                    >
+                      {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+                    </Button>
+                  </div>
+                  <div className="text-white text-sm">
+                    {t('video.title')}
+                  </div>
+                </div>
               </div>
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold">Personal Introduction</h3>
-                <p className="text-sm text-muted-foreground max-w-md">
-                  Learn about my engineering journey, passion for semiconductor technology, 
-                  and vision for innovation in power electronics and automotive systems.
-                </p>
-                <p className="text-xs text-muted-foreground italic">
-                  Video coming soon - Currently preparing a professional introduction
-                </p>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
-        
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-          <div>
-            <div className="text-2xl font-bold text-primary">🎯</div>
-            <div className="text-sm font-medium">Career Focus</div>
-            <div className="text-xs text-muted-foreground">Semiconductor Innovation</div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-primary">🚀</div>
-            <div className="text-sm font-medium">Research Interest</div>
-            <div className="text-xs text-muted-foreground">Power Electronics</div>
-          </div>
-          <div>
-            <div className="text-2xl font-bold text-primary">🌟</div>
-            <div className="text-sm font-medium">Goal</div>
-            <div className="text-xs text-muted-foreground">Reliability Solutions</div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+      </div>
+    </section>
   );
 };
