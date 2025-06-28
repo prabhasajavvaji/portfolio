@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -24,7 +23,8 @@ import {
   Code,
   Zap,
   Database,
-  Shield
+  Shield,
+  Download
 } from "lucide-react";
 
 const PortfolioContent = () => {
@@ -218,6 +218,15 @@ const PortfolioContent = () => {
     setMobileMenuOpen(false);
   };
 
+  const downloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/Prabhasa_Javvaji_CV.pdf';
+    link.download = 'Prabhasa_Javvaji_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Fixed Header Navigation */}
@@ -245,7 +254,7 @@ const PortfolioContent = () => {
               ))}
             </nav>
 
-            {/* Contact Button & Language Switch */}
+            {/* Contact Button, CV Download & Language Switch */}
             <div className="flex items-center space-x-4">
               <Button
                 onClick={() => scrollToSection('contact')}
@@ -253,6 +262,15 @@ const PortfolioContent = () => {
               >
                 <Mail className="w-4 h-4 mr-2" />
                 {language === 'en' ? 'Contact Me' : 'Kontakt'}
+              </Button>
+
+              <Button
+                onClick={downloadCV}
+                variant="outline"
+                className="hidden md:flex border-accent text-accent hover:bg-accent hover:text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105"
+              >
+                <Download className="w-4 h-4 mr-2" />
+                CV
               </Button>
               
               <div className="flex items-center space-x-2">
@@ -296,6 +314,14 @@ const PortfolioContent = () => {
                   <Mail className="w-4 h-4 mr-2" />
                   {language === 'en' ? 'Contact Me' : 'Kontakt'}
                 </Button>
+                <Button
+                  onClick={downloadCV}
+                  variant="outline"
+                  className="w-full border-accent text-accent hover:bg-accent hover:text-white font-semibold py-2 rounded-lg"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  {language === 'en' ? 'Download CV' : 'CV herunterladen'}
+                </Button>
               </nav>
             </div>
           )}
@@ -310,7 +336,7 @@ const PortfolioContent = () => {
             {/* Profile Image */}
             <div className="mb-8">
               <img
-                src="/my_headshot.jpeg"
+                src="/my_headshot.jpg"
                 alt="Prabhasa Javvaji"
                 className="w-48 h-48 md:w-56 md:h-56 rounded-full mx-auto object-cover border-4 border-primary animate-glow shadow-2xl"
                 onError={(e) => {
@@ -349,7 +375,10 @@ const PortfolioContent = () => {
               >
                 <Mail className="w-6 h-6 text-primary" />
               </a>
-              <button className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg">
+              <button 
+                onClick={downloadCV}
+                className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg"
+              >
                 <FileText className="w-6 h-6 text-primary" />
               </button>
             </div>
@@ -511,7 +540,7 @@ const PortfolioContent = () => {
                 <CardHeader>
                   <div className="flex justify-between items-start mb-4">
                     <CardTitle className="text-xl">{project.title}</CardTitle>
-                    <div className="flex flex-col items-end space-y-2">
+                    <div className="flex flex-col items-end space-x-2">
                       <Badge variant={project.status === (language === 'en' ? 'Ongoing' : 'Laufend') ? "default" : "secondary"}>
                         {project.status}
                       </Badge>
