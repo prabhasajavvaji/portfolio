@@ -27,8 +27,8 @@ export const ContactForm = () => {
       console.log('Attempting to send email using sendForm...');
 
       const result = await emailjs.sendForm(
-        'service_u6g7sah',
-        'template_pczimnf',
+        'service_qea5oxv',
+        'template_w9etnvn',
         form.current,
         'IQarIunzewqSF6tCv'
       );
