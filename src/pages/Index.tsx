@@ -27,6 +27,17 @@ import {
   Download
 } from "lucide-react";
 
+// Custom Xing Icon Component
+const XingIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+  >
+    <path d="M18.188 0c-.517 0-.573.046-1.022.591l-4.48 5.81L9.75 4.8c-.485-.621-.57-.8-1.023-.8H4.38c-.517 0-.573.046-1.022.591L.01 9.21c-.267.346-.267.8 0 1.146L3.36 15.2c.449.545.505.591 1.022.591h4.346c.453 0 .538-.179 1.023-.8l2.936-1.591 4.48 5.81c.449.545.505.591 1.022.591h4.346c.517 0 .573-.046 1.022-.591L23.99 14.79c.267-.346.267-.8 0-1.146L19.64 8.8c-.449-.545-.505-.591-1.022-.591h-4.346c-.453 0-.538.179-1.023.8l-2.936 1.591-4.48-5.81C9.761.046 9.705 0 9.188 0H4.38z"/>
+  </svg>
+);
+
 const PortfolioContent = () => {
   const [activeSection, setActiveSection] = useState('about');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -370,7 +381,15 @@ const PortfolioContent = () => {
                 <Linkedin className="w-6 h-6 text-primary" />
               </a>
               <a
-                href="mailto:Prabhasajavvaji27@gmail.com"
+                href="https://www.xing.com/profile/Prabhasa_Javvaji09012"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg"
+              >
+                <XingIcon className="w-6 h-6 text-primary" />
+              </a>
+              <a
+                href="mailto:prabhasajavvaji27@gmail.com"
                 className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg"
               >
                 <Mail className="w-6 h-6 text-primary" />
@@ -715,7 +734,15 @@ const PortfolioContent = () => {
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
-                href="mailto:Prabhasajavvaji27@gmail.com"
+                href="https://www.xing.com/profile/Prabhasa_Javvaji09012"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <XingIcon className="w-6 h-6" />
+              </a>
+              <a
+                href="mailto:prabhasajavvaji27@gmail.com"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="w-6 h-6" />

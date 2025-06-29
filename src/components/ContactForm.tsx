@@ -137,10 +137,10 @@ export const ContactForm = () => {
               <div>
                 <p className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">Email</p>
                 <a 
-                  href="mailto:Prabhasajavvaji@gmail.com?subject=Contact from Portfolio"
+                  href="mailto:prabhasajavvaji27@gmail.com?subject=Contact from Portfolio"
                   className="text-primary hover:text-primary/80 font-medium transition-colors break-all"
                 >
-                  Prabhasajavvaji@gmail.com
+                  prabhasajavvaji27@gmail.com
                 </a>
               </div>
             </div>
