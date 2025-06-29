@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,6 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 export const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const { t } = useLanguage();
 
   const togglePlay = () => {
@@ -17,6 +17,7 @@ export const VideoSection = () => {
         video.pause();
       } else {
         video.play();
+        setHasStarted(true);
       }
       setIsPlaying(!isPlaying);
     }
@@ -46,39 +47,30 @@ export const VideoSection = () => {
 
           <Card className="gradient-border hover-lift overflow-hidden">
             <CardContent className="p-0">
-              <div className="relative aspect-video bg-card">
+              <div className="relative aspect-video bg-black">
+                {/* Headshot Image - shown until video starts playing */}
+                {!hasStarted && (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <img
+                      src="src/assets/my_headshot.jpg"
+                      alt="Prabhasa Javvaji"
+                      className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-white/20 shadow-2xl"
+                    />
+                  </div>
+                )}
+                
                 <video
                   id="intro-video"
-                  className="w-full h-full object-cover"
-                  poster="/my_avatar.png"
+                  className={`w-full h-full object-cover ${!hasStarted ? 'hidden' : ''}`}
                   onPlay={() => setIsPlaying(true)}
                   onPause={() => setIsPlaying(false)}
                   onError={(e) => {
                     console.log('Video failed to load, showing placeholder');
                   }}
                 >
-                  <source src="/my_video.mp4" type="video/mp4" />
+                  <source src="src/assets/my_video.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-
-                {/* Video overlay with fallback */}
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-primary/10 to-transparent">
-                  {/* Placeholder content when video isn't available */}
-                  <div className="text-center text-white">
-                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-primary/20 flex items-center justify-center animate-glow">
-                      <img
-                        src="/my_avatar.png"
-                        alt="Prabhasa Avatar"
-                        className="w-24 h-24 rounded-full object-cover"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                        }}
-                      />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-2">Video Introduction</h3>
-                    <p className="text-lg text-gray-300 mb-6">Coming Soon</p>
-                  </div>
-                </div>
 
                 {/* Video Controls */}
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-black/50 backdrop-blur-sm rounded-lg p-3">

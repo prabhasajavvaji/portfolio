@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,11 +8,11 @@
 /* Dark theme color variables */
 @layer base {
   :root {
-    --background: 18 18 18; /* #121212 - Dark greyish black */
-    --foreground: 255 255 255; /* #ffffff */
+    --background: 0 100% 0%; /* #0a1128 - Very dark blue */
+    --foreground: 0 0% 80%; /* #f5f6f7 - Enamel white */
 
-    --card: 30 30 30; /* #1e1e1e */
-    --card-foreground: 255 255 255;
+    --card: 100 80% 0%; /* #1e1e1e */
+    --card-foreground: 0 0% 100%;
 
     --popover: 30 30 30;
     --popover-foreground: 255 255 255;
@@ -22,7 +21,7 @@
     --primary-foreground: 255 255 255;
 
     --secondary: 45 45 45; /* #2d2d2d */
-    --secondary-foreground: 230 230 230; /* #e6e6e6 */
+    --secondary-foreground: 0 0% 80%; /* white */
 
     --muted: 45 45 45;
     --muted-foreground: 156 163 175; /* #9ca3af */
@@ -46,8 +45,8 @@
 
   body {
     @apply bg-background text-foreground font-manrope;
-    background-color: #121212;
-    color: #ffffff;
+    background-color: #0a1128;
+    color: #f5f6f7;
   }
 
   html {

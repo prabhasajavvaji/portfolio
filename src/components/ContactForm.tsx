@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,57 +6,79 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, Send, CheckCircle, MapPin, Clock } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
-
-declare global {
-  interface Window {
-    emailjs: any;
-  }
-}
+import { toast } from "@/components/ui/sonner";
+import emailjs from '@emailjs/browser';
 
 export const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  const form = useRef<HTMLFormElement>(null);
   const { t, language } = useLanguage();
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      if (window.emailjs) {
-        await window.emailjs.send(
-          'service_qea5oxv',
-          'template_id',
-          {
-            from_name: formData.name,
-            from_email: formData.email,
-            subject: formData.subject,
-            message: formData.message,
-            to_email: 'Prabhasajavvaji27@gmail.com'
-          }
-        );
-        setIsSubmitted(true);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      } else {
-        console.log('EmailJS not loaded, form data:', formData);
-        setIsSubmitted(true);
+      if (!form.current) {
+        throw new Error('Form reference not found');
       }
-    } catch (error) {
+
+      console.log('Attempting to send email using sendForm...');
+
+      const result = await emailjs.sendForm(
+        'service_u6g7sah',
+        'template_pczimnf',
+        form.current,
+        'IQarIunzewqSF6tCv'
+      );
+
+      console.log('EmailJS result:', result);
+      
+      toast.success(
+        language === 'en' ? 'Message sent successfully!' : 'Nachricht erfolgreich gesendet!',
+        {
+          description: language === 'en' 
+            ? 'I\'ll get back to you within 24 hours.' 
+            : 'Ich werde mich innerhalb von 24 Stunden bei Ihnen melden.'
+        }
+      );
+      setIsSubmitted(true);
+      
+      // Reset the form
+      if (form.current) {
+        form.current.reset();
+      }
+      
+    } catch (error: any) {
       console.error('Error sending email:', error);
+      console.error('Error details:', {
+        message: error?.message || 'Unknown error',
+        status: error?.status || 'Unknown status',
+        text: error?.text || 'No error text',
+        stack: error?.stack || 'No stack trace'
+      });
+      
+      let errorMessage = 'Unknown error occurred';
+      
+      if (error?.message) {
+        errorMessage = error.message;
+      } else if (error?.status) {
+        errorMessage = `HTTP Error ${error.status}`;
+      } else if (error?.text) {
+        errorMessage = error.text;
+      } else if (typeof error === 'string') {
+        errorMessage = error;
+      }
+      
+      toast.error(
+        language === 'en' ? 'Failed to send message' : 'Nachricht konnte nicht gesendet werden',
+        {
+          description: language === 'en' 
+            ? `Error: ${errorMessage}. Please try again or contact me directly via email.` 
+            : `Fehler: ${errorMessage}. Bitte versuchen Sie es erneut oder kontaktieren Sie mich direkt per E-Mail.`
+        }
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -82,7 +103,7 @@ export const ContactForm = () => {
             </p>
             <Button 
               onClick={() => setIsSubmitted(false)}
-              className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 pointer-events-auto relative z-30"
             >
               {language === 'en' ? 'Send Another Message' : 'Weitere Nachricht senden'}
             </Button>
@@ -93,7 +114,7 @@ export const ContactForm = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-20">
       {/* Contact Info */}
       <div className="lg:col-span-1 space-y-6">
         <Card className="gradient-border hover-lift bg-card/90 backdrop-blur-sm">
@@ -116,10 +137,10 @@ export const ContactForm = () => {
               <div>
                 <p className="font-semibold text-sm text-muted-foreground uppercase tracking-wide">Email</p>
                 <a 
-                  href="mailto:Prabhasajavvaji27@gmail.com"
-                  className="text-primary hover:text-primary/80 font-medium transition-colors"
+                  href="mailto:Prabhasajavvaji@gmail.com?subject=Contact from Portfolio"
+                  className="text-primary hover:text-primary/80 font-medium transition-colors break-all"
                 >
-                  Prabhasajavvaji27@gmail.com
+                  Prabhasajavvaji@gmail.com
                 </a>
               </div>
             </div>
@@ -168,7 +189,7 @@ export const ContactForm = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={form} onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-foreground font-semibold">
@@ -178,10 +199,8 @@ export const ContactForm = () => {
                     id="name"
                     name="name"
                     type="text"
-                    value={formData.name}
-                    onChange={handleInputChange}
                     required
-                    className="bg-secondary/20 border-2 border-primary/20 focus:border-primary text-foreground rounded-lg h-12 px-4 transition-all duration-300 hover:border-primary/40"
+                    className="bg-secondary/20 border-2 border-primary/20 focus:border-primary text-foreground rounded-lg h-12 px-4 transition-all duration-300 hover:border-primary/40 pointer-events-auto relative z-30"
                     placeholder={language === 'en' ? 'Enter your full name' : 'Geben Sie Ihren vollständigen Namen ein'}
                   />
                 </div>
@@ -193,10 +212,8 @@ export const ContactForm = () => {
                     id="email"
                     name="email"
                     type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
                     required
-                    className="bg-secondary/20 border-2 border-primary/20 focus:border-primary text-foreground rounded-lg h-12 px-4 transition-all duration-300 hover:border-primary/40"
+                    className="bg-secondary/20 border-2 border-primary/20 focus:border-primary text-foreground rounded-lg h-12 px-4 transition-all duration-300 hover:border-primary/40 pointer-events-auto relative z-30"
                     placeholder={language === 'en' ? 'your.email@example.com' : 'ihre.email@beispiel.com'}
                   />
                 </div>
@@ -210,10 +227,7 @@ export const ContactForm = () => {
                   id="subject"
                   name="subject"
                   type="text"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                  className="bg-secondary/20 border-2 border-primary/20 focus:border-primary text-foreground rounded-lg h-12 px-4 transition-all duration-300 hover:border-primary/40"
+                  className="bg-secondary/20 border-2 border-primary/20 focus:border-primary text-foreground rounded-lg h-12 px-4 transition-all duration-300 hover:border-primary/40 pointer-events-auto relative z-30"
                   placeholder={language === 'en' ? 'What would you like to discuss?' : 'Was möchten Sie besprechen?'}
                 />
               </div>
@@ -225,11 +239,9 @@ export const ContactForm = () => {
                 <Textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
                   required
                   rows={6}
-                  className="bg-secondary/20 border-2 border-primary/20 focus:border-primary text-foreground rounded-lg px-4 py-3 transition-all duration-300 hover:border-primary/40 resize-none"
+                  className="bg-secondary/20 border-2 border-primary/20 focus:border-primary text-foreground rounded-lg px-4 py-3 transition-all duration-300 hover:border-primary/40 resize-none pointer-events-auto relative z-30"
                   placeholder={language === 'en' 
                     ? 'Tell me about your project, opportunity, or just say hello! I\'d love to hear from you.'
                     : 'Erzählen Sie mir von Ihrem Projekt, Ihrer Gelegenheit oder sagen Sie einfach Hallo! Ich würde gerne von Ihnen hören.'
@@ -240,7 +252,7 @@ export const ContactForm = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed pointer-events-auto relative z-30"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center space-x-3">

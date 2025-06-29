@@ -220,8 +220,8 @@ const PortfolioContent = () => {
 
   const downloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/Prabhasa_Javvaji_CV.pdf';
-    link.download = 'Prabhasa_Javvaji_CV.pdf';
+    link.href = 'src/assets/Prabhasa_Javvaji_CV.pdf';
+    link.download = 'src/assets/Prabhasa_Javvaji_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -230,7 +230,7 @@ const PortfolioContent = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Fixed Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-primary/20">
+      <header className="fixed top-0 left-0 right-0 z-10 glass border-b border-primary/20">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -338,9 +338,9 @@ const PortfolioContent = () => {
               <img
                 src="/my_headshot.jpg"
                 alt="Prabhasa Javvaji"
-                className="w-48 h-48 md:w-56 md:h-56 rounded-full mx-auto object-cover border-4 border-primary animate-glow shadow-2xl"
+                className="w-48 h-64 md:w-56 md:h-72 rounded-2xl mx-auto object-contain border-4 border-primary animate-glow shadow-2xl bg-card/20"
                 onError={(e) => {
-                  e.currentTarget.src = "/my_avatar.png";
+                  e.currentTarget.src = "src/assets/my_avatar.png";
                 }}
               />
             </div>
