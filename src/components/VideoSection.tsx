@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
+import myHeadshot from "../assets/my_headshot.jpg";
+import myVideo from "../assets/my_video.mp4";
 
 export const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -52,7 +54,7 @@ export const VideoSection = () => {
                 {!hasStarted && (
                   <div className="w-full h-full flex items-center justify-center">
                     <img
-                      src="src/assets/my_headshot.jpg"
+                      src={myHeadshot}
                       alt="Prabhasa Javvaji"
                       className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-white/20 shadow-2xl"
                     />
@@ -68,7 +70,7 @@ export const VideoSection = () => {
                     console.log('Video failed to load, showing placeholder');
                   }}
                 >
-                  <source src="src/assets/my_video.mp4" type="video/mp4" />
+                  <source src={myVideo} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
 

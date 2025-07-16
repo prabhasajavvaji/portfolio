@@ -26,6 +26,10 @@ import {
   Shield,
   Download
 } from "lucide-react";
+import myHeadshot from "../assets/my_headshot.jpg";
+import myAvatar from "../assets/my_avatar.png";
+import myVideo from "../assets/my_video.mp4";
+import myCV from "../assets/Prabhasa_Javvaji_CV.pdf";
 
 // Custom Xing Icon Component
 const XingIcon = ({ className }: { className?: string }) => (
@@ -244,8 +248,8 @@ const PortfolioContent = () => {
 
   const downloadCV = () => {
     const link = document.createElement('a');
-    link.href = 'src/assets/Prabhasa_Javvaji_CV.pdf';
-    link.download = 'src/assets/Prabhasa_Javvaji_CV.pdf';
+    link.href = myCV;
+    link.download = 'Prabhasa_Javvaji_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -360,11 +364,11 @@ const PortfolioContent = () => {
             {/* Profile Image */}
             <div className="mb-8">
               <img
-                src="/my_headshot.jpg"
+                src={myAvatar}
                 alt="Prabhasa Javvaji"
                 className="w-48 h-64 md:w-56 md:h-72 rounded-2xl mx-auto object-contain border-4 border-primary animate-glow shadow-elevated bg-card/80"
                 onError={(e) => {
-                  e.currentTarget.src = "src/assets/my_avatar.png";
+                  e.currentTarget.src = myAvatar;
                 }}
               />
             </div>
