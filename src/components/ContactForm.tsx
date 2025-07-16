@@ -25,7 +25,7 @@ export const ContactForm = () => {
         'service_qea5oxv',
         'template_w9etnvn',
         form.current,
-        'IQarIunzewqSF6tCv'
+        'wwEYwKJ40Qtxl20Mv'
       );
       toast.success(
         language === 'en' ? 'Message sent successfully!' : 'Nachricht erfolgreich gesendet!',
