@@ -94,15 +94,13 @@ const PortfolioContent = () => {
       period: language === 'en' ? 'March 2025 - Present' : 'März 2025 - Heute',
       location: 'Regensburg, Germany',
       responsibilities: language === 'en' ? [
-        'Conducting research on Transient Liquid Phase Sintering for die attach performance',
-        'Evaluating intermetallic phase formation in silver-based sintering pastes',
-        'Failure analysis using SEM, EDS, and DSC techniques',
-        'Contributing to electronics packaging technology advancement'
+        'Led research on Transient liquid phase sintering for stable die attach interconnection with bare Copper surfaces',
+        'Focused on enhancing die attach performance by evaluating the formation of intermetallic phases in sintering pastes or conductive adhesives based on Silver and low-melting metals/alloys.',
+        'Aimed to deliver insights that improve bond stability and reliability, advancing electronics packaging technologies.'
       ] : [
-        'Forschung zur Transient Liquid Phase Sintering für Die-Attach-Leistung',
-        'Bewertung der Bildung intermetallischer Phasen in silberbasierten Sinterpaste',
-        'Ausfallanalyse mit SEM-, EDS- und DSC-Techniken',
-        'Beitrag zur Weiterentwicklung der Elektronikverpackungstechnologie'
+        'Leitung der Forschung zur transienten Flüssigphasensinterung für stabile Die-Attach-Verbindungen mit blanken Kupferoberflächen',
+        'Fokus auf die Verbesserung der Die-Attach-Leistung durch Bewertung der Bildung intermetallischer Phasen in Sinterpasten oder leitfähigen Klebstoffen auf Silber- und niedrigschmelzenden Metall-/Legierungsbasis.',
+        'Ziel, Erkenntnisse zu liefern, die die Bindungsstabilität und Zuverlässigkeit verbessern und die Elektronikverpackungstechnologien voranbringen.'
       ]
     },
     {
@@ -111,15 +109,15 @@ const PortfolioContent = () => {
       period: language === 'en' ? 'February 2024 - January 2025' : 'Februar 2024 - Januar 2025',
       location: 'Regensburg, Germany',
       responsibilities: language === 'en' ? [
-        'Built interactive Tableau dashboards for production data visualization',
-        'Automated reports using Python/VBA, reducing manual work by 40%',
-        'Created centralized Confluence knowledge base',
-        'Supported FMEA and MRB quality processes'
+        'Developed dashboards using Tableau for Deviation Decision Help data for the Backend Semiconductor Production floor.',
+        'Programmed solutions using Python and VBA to streamline and automate the processing of recurring Excel and PDF datasets.',
+        'Built and managed Confluence knowledge repositories for Backend Preassembly production.',
+        'Expertise in Backend Quality standards and analysis, including FMEA and MRB Process.'
       ] : [
-        'Erstellung interaktiver Tableau-Dashboards für Produktionsdatenvisualisierung',
-        'Automatisierte Berichte mit Python/VBA, 40% Reduzierung manueller Arbeit',
-        'Erstellung einer zentralen Confluence-Wissensbasis',
-        'Unterstützung von FMEA- und MRB-Qualitätsprozessen'
+        'Entwicklung von Dashboards mit Tableau für Deviation Decision Help-Daten in der Backend-Halbleiterproduktion.',
+        'Programmierung von Lösungen mit Python und VBA zur Optimierung und Automatisierung der Verarbeitung wiederkehrender Excel- und PDF-Datensätze.',
+        'Aufbau und Verwaltung von Confluence-Wissensdatenbanken für die Backend-Vormontageproduktion.',
+        'Expertise in Backend-Qualitätsstandards und -analysen, einschließlich FMEA und MRB-Prozess.'
       ]
     },
     {
@@ -128,15 +126,30 @@ const PortfolioContent = () => {
       period: language === 'en' ? 'September 2020 - February 2023' : 'September 2020 - Februar 2023',
       location: 'Bengaluru, India',
       responsibilities: language === 'en' ? [
-        'Led EMI/EMC testing for automotive safety systems',
-        'Ensured ISO 17025 compliance across multiple OEM projects',
-        'Managed validation cycles and optimized resource efficiency',
-        'Applied expertise in CAN, FlexRay, and Ethernet protocols'
+        'Led a team in executing rigorous EMC testing (BCI), ensuring compliance with ISO 17025, CISPR 25, ISO 11452-1/2/4 while optimizing coverage, efficiency and resource allocation to meet KPIs and customer demands.',
+        'Ensured accuracy in test documentation and reporting, enabling data-driven decisions and high client satisfaction.',
+        'Provided technical expertise to validate measurements and results, supporting other test leads in cross-project verification, and ensured seamless collaboration to maintain high-quality deliverables.',
+        'Gained expertise in RF root cause analysis by troubleshooting and resolving failures during development ECU testing, analyzing RF interference impacts.'
       ] : [
-        'Leitung von EMI/EMC-Tests für Automobilsicherheitssysteme',
-        'Sicherstellung der ISO 17025-Konformität bei mehreren OEM-Projekten',
-        'Verwaltung von Validierungszyklen und Optimierung der Ressourceneffizienz',
-        'Anwendung von Expertise in CAN-, FlexRay- und Ethernet-Protokollen'
+        'Leitung eines Teams zur Durchführung anspruchsvoller EMV-Prüfungen (BCI), Sicherstellung der Einhaltung von ISO 17025, CISPR 25, ISO 11452-1/2/4 und gleichzeitige Optimierung von Abdeckung, Effizienz und Ressourceneinsatz zur Erfüllung von KPIs und Kundenanforderungen.',
+        'Sicherstellung der Genauigkeit von Testdokumentation und Berichterstattung, um datenbasierte Entscheidungen und hohe Kundenzufriedenheit zu ermöglichen.',
+        'Bereitstellung technischer Expertise zur Validierung von Messungen und Ergebnissen, Unterstützung anderer Testleiter bei projektübergreifender Verifikation und Sicherstellung einer nahtlosen Zusammenarbeit für hochwertige Ergebnisse.',
+        'Erfahrung in der Ursachenanalyse von HF-Störungen durch Fehlerbehebung und Lösung von Problemen während der Entwicklung von ECU-Tests, Analyse der Auswirkungen von HF-Störungen.'
+      ]
+    },
+    {
+      title: language === 'en' ? 'EMC Test Engineer' : 'EMV-Testingenieur',
+      company: 'Bosch Global Software Technologies',
+      period: language === 'en' ? 'September 2019 - September 2020' : 'September 2019 - September 2020',
+      location: 'Bengaluru, India',
+      responsibilities: language === 'en' ? [
+        'Performed EMC/Electrical testing – Bulk Current Injection, Conducted/Radiated Emissions, Radiated Immunity (Antenna Method), and ESD for Automotive Chassis and Active Safety Systems.',
+        'Ensured full compliance with ISO 17025 standards while testing for multiple OEMs.',
+        'Gained expertise in Networking Protocols such as CAN, FlexRay, and Ethernet.'
+      ] : [
+        'Durchführung von EMV-/Elektriktests – Bulk Current Injection, leitungsgebundene/abgestrahlte Emissionen, abgestrahlte Störfestigkeit (Antennenmethode) und ESD für Fahrgestell- und aktive Sicherheitssysteme im Automobilbereich.',
+        'Sicherstellung der vollständigen Einhaltung der ISO 17025-Standards bei Tests für mehrere OEMs.',
+        'Erfahrung mit Netzwerkprotokollen wie CAN, FlexRay und Ethernet.'
       ]
     }
   ];
