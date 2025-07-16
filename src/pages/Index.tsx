@@ -254,12 +254,12 @@ const PortfolioContent = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Fixed Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-10 glass border-b border-primary/20">
+      <header className="fixed top-0 left-0 right-0 z-10 glass border-b border-primary/10 shadow-elevated">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-full animate-glow"></div>
+              <div className="w-8 h-8 bg-primary rounded-full animate-glow shadow-elevated"></div>
               <span className="font-bold text-xl text-primary">PJ</span>
             </div>
 
@@ -282,7 +282,7 @@ const PortfolioContent = () => {
             <div className="flex items-center space-x-4">
               <Button
                 onClick={() => scrollToSection('contact')}
-                className="hidden md:flex bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                className="hidden md:flex btn-primary shadow-elevated"
               >
                 <Mail className="w-4 h-4 mr-2" />
                 {language === 'en' ? 'Contact Me' : 'Kontakt'}
@@ -291,7 +291,7 @@ const PortfolioContent = () => {
               <Button
                 onClick={downloadCV}
                 variant="outline"
-                className="hidden md:flex border-accent text-accent hover:bg-accent hover:text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105"
+                className="hidden md:flex btn-secondary"
               >
                 <Download className="w-4 h-4 mr-2" />
                 CV
@@ -318,7 +318,7 @@ const PortfolioContent = () => {
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-primary/20">
+            <div className="md:hidden py-4 border-t border-primary/10 bg-card/90 backdrop-blur-lg rounded-b-xl shadow-elevated">
               <nav className="flex flex-col space-y-4">
                 {navigationItems.map((item) => (
                   <button
@@ -333,7 +333,7 @@ const PortfolioContent = () => {
                 ))}
                 <Button
                   onClick={() => scrollToSection('contact')}
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2 rounded-lg mt-4"
+                  className="w-full btn-primary mt-4 shadow-elevated"
                 >
                   <Mail className="w-4 h-4 mr-2" />
                   {language === 'en' ? 'Contact Me' : 'Kontakt'}
@@ -341,7 +341,7 @@ const PortfolioContent = () => {
                 <Button
                   onClick={downloadCV}
                   variant="outline"
-                  className="w-full border-accent text-accent hover:bg-accent hover:text-white font-semibold py-2 rounded-lg"
+                  className="w-full btn-secondary"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   {language === 'en' ? 'Download CV' : 'CV herunterladen'}
@@ -353,8 +353,8 @@ const PortfolioContent = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-accent/5 to-transparent"></div>
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-gradient-to-br from-background via-secondary to-accent/10">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-transparent"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-fade-in-up">
             {/* Profile Image */}
@@ -362,7 +362,7 @@ const PortfolioContent = () => {
               <img
                 src="/my_headshot.jpg"
                 alt="Prabhasa Javvaji"
-                className="w-48 h-64 md:w-56 md:h-72 rounded-2xl mx-auto object-contain border-4 border-primary animate-glow shadow-2xl bg-card/20"
+                className="w-48 h-64 md:w-56 md:h-72 rounded-2xl mx-auto object-contain border-4 border-primary animate-glow shadow-elevated bg-card/80"
                 onError={(e) => {
                   e.currentTarget.src = "src/assets/my_avatar.png";
                 }}
@@ -370,7 +370,7 @@ const PortfolioContent = () => {
             </div>
 
             {/* Hero Content */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-white via-primary to-accent bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text text-transparent">
               {t('hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-primary mb-4 font-semibold">
@@ -389,7 +389,7 @@ const PortfolioContent = () => {
                 href="https://www.linkedin.com/in/prabhasa-javvaji-27b8a61b2/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg"
+                className="p-4 rounded-full bg-card border-2 border-primary/10 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-elevated"
               >
                 <Linkedin className="w-6 h-6 text-primary" />
               </a>
@@ -397,19 +397,19 @@ const PortfolioContent = () => {
                 href="https://www.xing.com/profile/Prabhasa_Javvaji09012"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg"
+                className="p-4 rounded-full bg-card border-2 border-primary/10 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-elevated"
               >
                 <XingIcon className="w-6 h-6 text-primary" />
               </a>
               <a
                 href="mailto:prabhasajavvaji27@gmail.com"
-                className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg"
+                className="p-4 rounded-full bg-card border-2 border-primary/10 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-elevated"
               >
                 <Mail className="w-6 h-6 text-primary" />
               </a>
               <button 
                 onClick={downloadCV}
-                className="p-4 rounded-full bg-card border-2 border-primary/30 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-lg"
+                className="p-4 rounded-full bg-card border-2 border-primary/10 hover:border-primary hover:bg-primary/10 transition-all hover-scale shadow-elevated"
               >
                 <FileText className="w-6 h-6 text-primary" />
               </button>
@@ -419,14 +419,14 @@ const PortfolioContent = () => {
             <div className="flex justify-center space-x-4 mb-12">
               <Button
                 onClick={() => scrollToSection('contact')}
-                className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                className="btn-primary shadow-elevated"
               >
                 {language === 'en' ? 'Get In Touch' : 'Kontakt aufnehmen'}
               </Button>
               <Button
                 onClick={() => scrollToSection('projects')}
                 variant="outline"
-                className="border-2 border-accent text-accent hover:bg-accent hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+                className="btn-secondary"
               >
                 {language === 'en' ? 'View Projects' : 'Projekte ansehen'}
               </Button>
@@ -441,28 +441,27 @@ const PortfolioContent = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 relative">
+      <section id="about" className="py-20 relative bg-card/90 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary">
               {t('about.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-12">
               {t('about.description')}
             </p>
-            
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center p-6 rounded-lg bg-card/50 border border-primary/20 hover:border-primary/50 transition-all hover-lift">
+              <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
                 <div className="text-4xl font-bold text-primary mb-2">7+</div>
                 <div className="text-muted-foreground font-medium">{language === 'en' ? 'Years Experience' : 'Jahre Erfahrung'}</div>
               </div>
-              <div className="text-center p-6 rounded-lg bg-card/50 border border-primary/20 hover:border-primary/50 transition-all hover-lift">
+              <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
                 <div className="text-4xl font-bold text-accent mb-2">2</div>
                 <div className="text-muted-foreground font-medium">{language === 'en' ? 'Top Companies' : 'Top-Unternehmen'}</div>
               </div>
-              <div className="text-center p-6 rounded-lg bg-card/50 border border-primary/20 hover:border-primary/50 transition-all hover-lift">
+              <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
                 <div className="text-4xl font-bold text-primary mb-2">4</div>
                 <div className="text-muted-foreground font-medium">{language === 'en' ? 'Major Projects' : 'Große Projekte'}</div>
               </div>
@@ -472,13 +471,15 @@ const PortfolioContent = () => {
       </section>
 
       {/* Video Section */}
-      <VideoSection />
+      <div className="bg-secondary/80 py-12">
+        <VideoSection />
+      </div>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 bg-card/30">
+      <section id="skills" className="py-20 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
               {t('skills.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -486,7 +487,7 @@ const PortfolioContent = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Semiconductor Skills */}
-            <Card className="gradient-border hover-lift bg-card/80 backdrop-blur-sm">
+            <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
               <CardHeader className="text-center">
                 <Zap className="w-12 h-12 text-primary mx-auto mb-4" />
                 <CardTitle className="text-primary">{t('skills.semiconductor')}</CardTitle>
@@ -494,7 +495,7 @@ const PortfolioContent = () => {
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.semiconductor.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-primary/20 transition-colors">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-primary/10 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -503,7 +504,7 @@ const PortfolioContent = () => {
             </Card>
 
             {/* Testing Skills */}
-            <Card className="gradient-border hover-lift bg-card/80 backdrop-blur-sm">
+            <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
               <CardHeader className="text-center">
                 <Shield className="w-12 h-12 text-accent mx-auto mb-4" />
                 <CardTitle className="text-accent">{t('skills.testing')}</CardTitle>
@@ -511,7 +512,7 @@ const PortfolioContent = () => {
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.testing.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-accent/20 transition-colors">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-accent/10 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -520,7 +521,7 @@ const PortfolioContent = () => {
             </Card>
 
             {/* Programming Skills */}
-            <Card className="gradient-border hover-lift bg-card/80 backdrop-blur-sm">
+            <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
               <CardHeader className="text-center">
                 <Code className="w-12 h-12 text-primary mx-auto mb-4" />
                 <CardTitle className="text-primary">{t('skills.programming')}</CardTitle>
@@ -528,7 +529,7 @@ const PortfolioContent = () => {
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.programming.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-primary/20 transition-colors">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-primary/10 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -537,7 +538,7 @@ const PortfolioContent = () => {
             </Card>
 
             {/* Quality Skills */}
-            <Card className="gradient-border hover-lift bg-card/80 backdrop-blur-sm">
+            <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
               <CardHeader className="text-center">
                 <Database className="w-12 h-12 text-accent mx-auto mb-4" />
                 <CardTitle className="text-accent">{t('skills.quality')}</CardTitle>
@@ -545,7 +546,7 @@ const PortfolioContent = () => {
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.quality.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-accent/20 transition-colors">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-accent/10 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -557,10 +558,10 @@ const PortfolioContent = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20">
+      <section id="projects" className="py-20 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
               {t('projects.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -568,10 +569,10 @@ const PortfolioContent = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="gradient-border hover-lift h-full">
+              <Card key={index} className="gradient-border hover-lift h-full bg-secondary/90 card">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-4">
-                    <CardTitle className="text-xl">{project.title}</CardTitle>
+                    <CardTitle className="text-xl text-primary">{project.title}</CardTitle>
                     <div className="flex flex-col items-end space-x-2">
                       <Badge variant={project.status === (language === 'en' ? 'Ongoing' : 'Laufend') ? "default" : "secondary"}>
                         {project.status}
@@ -586,7 +587,7 @@ const PortfolioContent = () => {
                     <p className="font-medium mb-2">Technologies:</p>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, idx) => (
-                        <Badge key={idx} variant="outline" className="border-primary/30">
+                        <Badge key={idx} variant="outline" className="border-primary/10">
                           {tech}
                         </Badge>
                       ))}
@@ -600,10 +601,10 @@ const PortfolioContent = () => {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 bg-card/30">
+      <section id="experience" className="py-20 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
               {t('experience.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -614,17 +615,15 @@ const PortfolioContent = () => {
               <div key={index} className="relative mb-12 last:mb-0">
                 {/* Timeline line */}
                 {index < experience.length - 1 && (
-                  <div className="absolute left-6 top-12 w-0.5 h-full bg-primary/30"></div>
+                  <div className="absolute left-6 top-12 w-0.5 h-full bg-primary/10"></div>
                 )}
-                
                 <div className="flex items-start space-x-6">
                   {/* Timeline dot */}
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center animate-glow flex-shrink-0">
+                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center animate-glow flex-shrink-0 shadow-elevated">
                     <Briefcase className="w-6 h-6 text-background" />
                   </div>
-                  
                   {/* Content */}
-                  <Card className="gradient-border hover-lift flex-1">
+                  <Card className="gradient-border hover-lift flex-1 bg-secondary/90 card">
                     <CardHeader>
                       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                         <div>
@@ -664,10 +663,10 @@ const PortfolioContent = () => {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-20">
+      <section id="education" className="py-20 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
               {t('education.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -675,10 +674,10 @@ const PortfolioContent = () => {
 
           <div className="max-w-4xl mx-auto space-y-8">
             {education.map((edu, index) => (
-              <Card key={index} className="gradient-border hover-lift">
+              <Card key={index} className="gradient-border hover-lift bg-secondary/90 card">
                 <CardHeader>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <GraduationCap className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
@@ -716,11 +715,11 @@ const PortfolioContent = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-card/30">
+      <section id="contact" className="py-20 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
                 {t('contact.title')}
                 <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
               </h2>
@@ -728,13 +727,15 @@ const PortfolioContent = () => {
                 {t('contact.description')}
               </p>
             </div>
-            <ContactForm />
+            <div className="bg-secondary/90 rounded-xl shadow-elevated p-8">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-primary/20">
+      <footer className="py-12 border-t border-primary/10 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="flex justify-center space-x-6 mb-6">
