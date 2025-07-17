@@ -85,8 +85,8 @@ const PortfolioContent = () => {
       'LTSpice',
       'MATLAB',
       'LabVIEW',
-      'HTML'
-      'C Programming'
+      'HTML',
+      'C Programming',
     ],
     quality: [
       'FMEA (Failure Mode and Effects Analysis)',
