@@ -69,7 +69,7 @@ const PortfolioContent = () => {
     ],
     testing: [
       'EMI/EMC Validation (BCI, Radiated Emissions/Immunity, ESD',
-      'ISO 17025, CISPR 25, ISO 11452 Compliance',
+      'ISO 17025, CISPR 25, ISO 11452 -1/2/4 Compliance',
       'RF interference analysis and root cause investigation',
       'Automotive Electronics Testing',
       'Failure analysis and defect characterization',
@@ -106,7 +106,7 @@ const PortfolioContent = () => {
       period: language === 'en' ? 'March 2025 - Present' : 'März 2025 - Heute',
       location: 'Regensburg, Germany',
       responsibilities: language === 'en' ? [
-        'Led research on Transient liquid phase sintering for stable die attach interconnection with bare Copper surfaces',
+        'Leading research on Transient liquid phase sintering for stable die attach interconnection with bare Copper surfaces',
         'Focused on enhancing die attach performance by evaluating the formation of intermetallic phases in sintering pastes or conductive adhesives based on Silver and low-melting metals/alloys.',
         'Aimed to deliver insights that improve bond stability and reliability, advancing electronics packaging technologies.'
       ] : [
@@ -121,9 +121,9 @@ const PortfolioContent = () => {
       period: language === 'en' ? 'February 2024 - January 2025' : 'Februar 2024 - Januar 2025',
       location: 'Regensburg, Germany',
       responsibilities: language === 'en' ? [
-        'Developed dashboards using Tableau for Deviation Decision Help data for the Backend Semiconductor Production floor.',
-        'Programmed solutions using Python and VBA to streamline and automate the processing of recurring Excel and PDF datasets.',
-        'Built and managed Confluence knowledge repositories for Backend Preassembly production.',
+        'Designed and deployed interactive Tableau dashboards that visualized various facilities in the backend semiconductor process, enhancing visibility and decision-making efficiency by 30%.',
+        'Automated data workflows by developing Python and VBA scripts, reducing manual processing time of recurring Excel and PDF reports by 70% — this significantly saved time and improved team productivity.',
+        'Established and maintained a structured Confluence knowledge base for Backend Preassembly operations, enhancing cross-team documentation access and cutting information retrieval time by 40%.',
         'Expertise in Backend Quality standards and analysis, including FMEA and MRB Process.'
       ] : [
         'Entwicklung von Dashboards mit Tableau für Deviation Decision Help-Daten in der Backend-Halbleiterproduktion.',
@@ -138,7 +138,7 @@ const PortfolioContent = () => {
       period: language === 'en' ? 'September 2020 - February 2023' : 'September 2020 - Februar 2023',
       location: 'Bengaluru, India',
       responsibilities: language === 'en' ? [
-        'Led a team in executing rigorous EMC testing (BCI), ensuring compliance with ISO 17025, CISPR 25, ISO 11452-1/2/4 while optimizing coverage, efficiency and resource allocation to meet KPIs and customer demands.',
+        'Led a team in executing rigorous 100+ EMC tests (Conducted Immunity/Emissions, Radiated Immunity/Emissions and ESD), ensuring compliance with ISO 17025, CISPR 25, ISO 11452-1/2/4 while optimizing coverage, efficiency and resource allocation to meet KPIs and customer demands.',
         'Ensured accuracy in test documentation and reporting, enabling data-driven decisions and high client satisfaction.',
         'Provided technical expertise to validate measurements and results, supporting other test leads in cross-project verification, and ensured seamless collaboration to maintain high-quality deliverables.',
         'Gained expertise in RF root cause analysis by troubleshooting and resolving failures during development ECU testing, analyzing RF interference impacts.'
@@ -156,11 +156,11 @@ const PortfolioContent = () => {
       location: 'Bengaluru, India',
       responsibilities: language === 'en' ? [
         'Performed EMC/Electrical testing – Bulk Current Injection, Conducted/Radiated Emissions, Radiated Immunity (Antenna Method), and ESD for Automotive Chassis and Active Safety Systems.',
-        'Ensured full compliance with ISO 17025 standards while testing for multiple OEMs.',
-        'Gained expertise in Networking Protocols such as CAN, FlexRay, and Ethernet.'
+        'Ensured full compliance with ISO 17025 , CISPR 25, ISO 11452 - 1/2/4 standards while testing for multiple OEMs.',
+        'Gained expertise in Networking Protocols such as CAN, FlexRay and Ethernet.'
       ] : [
         'Durchführung von EMV-/Elektriktests – Bulk Current Injection, leitungsgebundene/abgestrahlte Emissionen, abgestrahlte Störfestigkeit (Antennenmethode) und ESD für Fahrgestell- und aktive Sicherheitssysteme im Automobilbereich.',
-        'Sicherstellung der vollständigen Einhaltung der ISO 17025-Standards bei Tests für mehrere OEMs.',
+        'Sicherstellung der vollständigen Einhaltung der ISO 17025, CISPR 25, ISO 11452 -1/2/4 -Standards bei Tests für mehrere OEMs.',
         'Erfahrung mit Netzwerkprotokollen wie CAN, FlexRay und Ethernet.'
       ]
     }
@@ -172,7 +172,7 @@ const PortfolioContent = () => {
       description: language === 'en' ? 
         'Advanced research on die attach performance for power electronics, focusing on intermetallic phase formation and bond reliability.' :
         'Fortgeschrittene Forschung zur Die-Attach-Leistung für Leistungselektronik mit Fokus auf intermetallische Phasenbildung und Bindungszuverlässigkeit.',
-      technologies: ['Materials Science', 'SEM', 'EDS', 'DSC'],
+      technologies: ['Die Attach Process', 'Transient Liquid Phase Sintering' 'Materials Research', 'High resolution material characterization tools', 'DSC'],
       status: language === 'en' ? 'Ongoing' : 'Laufend',
       date: '2025'
     },
