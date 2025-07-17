@@ -22,7 +22,7 @@ const translations = {
     // Hero Section
     'hero.title': 'Prabhasa Javvaji',
     'hero.subtitle': 'Electrical & Microsystems Engineer',
-    'hero.description': 'Semiconductor Packaging Expert | EMI/EMC Validation | Quality Management',
+    'hero.description': 'Semiconductor Packaging  | EMI/EMC Validation | Quality Management',
     'hero.company': 'Research Engineer at Infineon Technologies | Ex-Bosch',
     
     // About Section
