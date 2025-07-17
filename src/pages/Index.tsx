@@ -59,35 +59,43 @@ const PortfolioContent = () => {
   const technicalSkills = {
     semiconductor: [
       'Advanced Semiconductor Packaging',
+      'Advanced Interconnection Materials Research',
+      'Semiconductor Backend Process (Wire bonding, Die attach, Flip chip technology)',
       'Transient Liquid Phase Sintering',
-      'Die Bonding & Wire Bonding',
-      'Failure Analysis (SEM, EDS, DSC)',
-      'Flip Chip Technology',
-      'Backend Process Technology'
+      'Power Electronics Prototyping',
+      'Thermal Analysis (DSC) and Rheology Analysis',
+      'Analytical Microscopy and Imaging systems (SAM,SEM,EDX)',
+      'Electrical measurement devices and techniques'
     ],
     testing: [
-      'EMI/EMC Validation',
-      'ISO 17025 Compliance',
-      'RF Testing & Analysis',
+      'EMI/EMC Validation (BCI, Radiated Emissions/Immunity, ESD',
+      'ISO 17025, CISPR 25, ISO 11452 Compliance',
+      'RF interference analysis and root cause investigation',
       'Automotive Electronics Testing',
-      'CAN/FlexRay Protocols',
+      'Failure analysis and defect characterization',
+      'Networking Protocols (CAN/FlexRay/Ethernet)',
       'Signal Integrity Analysis'
     ],
     programming: [
-      'Python Automation',
-      'VBA Development',
-      'Tableau Dashboards',
+      'Python (Automation scripts for data processing and reporting)',
+      'VBA Development (Excel Automation)',
+      'Confluence (Documentation and knowledge base setup)',
+      'Tableau (Dashboards for backend deviation decision support)',
       'KiCAD Design',
+      'LTSpice',
+      'MATLAB',
       'LabVIEW',
+      'HTML'
       'C Programming'
     ],
     quality: [
-      'FMEA Processes',
-      'MRB Quality Control',
-      'Statistical Process Control',
+      'FMEA (Failure Mode and Effects Analysis)',
+      'MRB process (Material Review Board)',
+      'Statistical Process Control (SPC)',
       'Root Cause Analysis',
       'Technical Documentation',
-      'Confluence Management'
+      'Production defect analysis and corrective action processes'
+      'Experience in Internal/External Quality and Technical Audits'
     ]
   };
 
