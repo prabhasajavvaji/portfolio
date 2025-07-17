@@ -94,8 +94,8 @@ const PortfolioContent = () => {
       'Statistical Process Control (SPC)',
       'Root Cause Analysis',
       'Technical Documentation',
-      'Production defect analysis and corrective action processes'
-      'Experience in Internal/External Quality and Technical Audits'
+      'Production defect analysis and corrective action processes',
+      'Experience in Internal/External Quality and Technical Audits',
     ]
   };
 
@@ -172,7 +172,7 @@ const PortfolioContent = () => {
       description: language === 'en' ? 
         'Advanced research on die attach performance for power electronics, focusing on intermetallic phase formation and bond reliability.' :
         'Fortgeschrittene Forschung zur Die-Attach-Leistung für Leistungselektronik mit Fokus auf intermetallische Phasenbildung und Bindungszuverlässigkeit.',
-      technologies: ['Die Attach Process', 'Transient Liquid Phase Sintering' 'Materials Research', 'High resolution material characterization tools', 'DSC'],
+      technologies: ['Die Attach Process', 'Transient Liquid Phase Sintering', 'Materials Research', 'High resolution material characterization tools', 'DSC'],
       status: language === 'en' ? 'Ongoing' : 'Laufend',
       date: '2025'
     },
