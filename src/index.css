@@ -5,44 +5,52 @@
 /* Custom font family */
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap');
 
-/* Professional dark theme with vibrant gradient accents */
+/* Professional dark theme with clean blue/gray palette */
 @layer base {
   :root {
-    --background: 230 25% 8%;   /* #151728 - deep blue-black */
-    --foreground: 220 15% 98%;  /* #f3f6fa - off-white */
+    --background: 330 60% 75%;  /* keep baby pink background */
+    --foreground: 230 20% 22%;  /* soft slate for contrast, not too dark */
 
-    --card: 230 25% 12%;        /* #1a1d2b - dark navy */
-    --card-foreground: 220 15% 98%;
+    /* Enamel white, Pastel blue, Light purple palette */
+    --card: 60 20% 96%;            /* enamel white */
+    --card-foreground: 230 20% 24%;
 
-    --popover: 230 25% 16%;     /* #23253a */
-    --popover-foreground: 220 15% 98%;
+    --popover: 265 60% 96%;        /* light purple surface */
+    --popover-foreground: 230 20% 24%;
 
-    --primary: 220 100% 60%;    /* #3b82f6 - bright blue */
+    --primary: 330 60% 75%;        /* keep baby pink primary */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 16% 24%;   /* #2d334a - steel gray */
-    --secondary-foreground: 220 15% 96%;
+    --secondary: 210 60% 92%;      /* pastel blue */
+    --secondary-foreground: 230 25% 28%;
 
-    --muted: 220 10% 30%;       /* #3a4656 */
-    --muted-foreground: 220 10% 70%; /* #b8c2ce */
+    --muted: 230 40% 92%;          /* soft pastel blue/purple */
+    --muted-foreground: 230 25% 35%;
 
-    --accent-pink: 330 100% 70%;    /* #ff4ecd - neon pink */
-    --accent-purple: 265 100% 70%;  /* #a084f7 - vivid purple */
-    --accent-blue: 220 100% 60%;    /* #3b82f6 - bright blue */
-    --accent-orange: 28 100% 60%;   /* #ff9900 - vibrant orange */
+    --heading-primary: 230 25% 22%;     /* soft slate for headings */
+    --heading-secondary: 265 25% 35%;   /* muted lavender for subheadings */
+    --name-color: 230 25% 20%;          /* slightly deeper for emphasis */
+    --title-color: 230 20% 35%;         /* muted title color */
 
-    --accent: 330 100% 70%;     /* default accent: pink */
-    --accent-foreground: 0 0% 100%;
+    --accent-baby-pink: 330 60% 75%;    /* keep */
+    --accent-soft-grey: 210 55% 70%;    /* repurposed to pastel blue */
+    --accent-light-pink: 330 50% 80%;   /* keep */
+    --accent-pale-grey: 265 60% 85%;    /* repurposed to light purple */
+    --accent-dusty-pink: 330 40% 70%;   /* keep */
+    --accent-warm-grey: 60 20% 90%;     /* repurposed to enamel white tint */
 
-    --highlight: 28 100% 60%;   /* #ff9900 - orange for highlights */
+    --accent: 210 40% 80%;              /* default accent to pastel blue */
+    --accent-foreground: 230 20% 22%;
+
+    --highlight: 330 60% 75%;           /* keep pink highlights */
     --highlight-foreground: 0 0% 100%;
 
-    --destructive: 0 80% 60%;   /* #ef4444 - red for errors */
+    --destructive: 0 80% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 16% 24%;
-    --input: 220 16% 24%;
-    --ring: 220 100% 60%;
+    --border: 210 40% 85%;
+    --input: 210 40% 88%;
+    --ring: 265 40% 70%;
 
     --radius: 0.75rem;
   }
@@ -53,8 +61,8 @@
 
   body {
     @apply bg-background text-foreground font-manrope;
-    background: #151728;
-    color: #f3f6fa;
+    background: #f8bbd9; /* keep pink */
+    color: hsl(var(--foreground));
   }
 
   html {
@@ -68,16 +76,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #2d334a;
+  background: #e6f0fb; /* pastel blue */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #a084f7;
+  background: #d9e7ff; /* lighter pastel blue */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff4ecd;
+  background: #e6d9fa; /* light purple */
 }
 
 /* Animations */
@@ -103,11 +111,55 @@
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+    box-shadow: 0 0 15px rgba(204, 226, 246, 0.35); /* pastel blue glow */
   }
   50% {
-    box-shadow: 0 0 40px rgba(20, 184, 166, 0.6);
+    box-shadow: 0 0 25px rgba(230, 217, 250, 0.45); /* light purple glow */
   }
+}
+
+/* Soft white back-glow for hero photo */
+@keyframes whiteGlow {
+  0%, 100% {
+    /* pastel blue dominant glow with soft white core */
+    box-shadow:
+      0 0 26px 10px rgba(255,255,255,0.28),         /* white core */
+      0 0 46px 16px rgba(204,226,246,0.45),         /* pastel blue */
+      0 0 68px 26px rgba(204,226,246,0.35);         /* extended blue halo */
+  }
+  50% {
+    box-shadow:
+      0 0 36px 14px rgba(255,255,255,0.38),
+      0 0 72px 28px rgba(204,226,246,0.6),
+      0 0 96px 38px rgba(204,226,246,0.45);
+  }
+}
+
+/* Subtle white border pulse without resizing */
+@keyframes borderBlinkWhite {
+  0%, 100% {
+    outline-color: rgba(204,226,246,0.85);          /* pastel blue border */
+    box-shadow:
+      0 0 0 0 rgba(0,0,0,0),
+      0 0 22px 6px rgba(204,226,246,0.45);         /* blue halo reflection */
+  }
+  50% {
+    outline-color: rgba(204,226,246,0.45);
+    box-shadow:
+      0 0 0 0 rgba(0,0,0,0),
+      0 0 38px 10px rgba(204,226,246,0.65);
+  }
+}
+
+.animate-white-glow {
+  animation: whiteGlow 1.8s ease-in-out infinite;
+}
+
+.border-blink-white {
+  outline: 3px solid rgba(255,255,255,0.6);
+  outline-offset: 0px; /* avoid layout shift */
+  animation: borderBlinkWhite 1.6s ease-in-out infinite;
+  will-change: box-shadow, outline-color;
 }
 
 @keyframes shimmer {
@@ -132,15 +184,15 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(204, 226, 246, 0.4), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
 
-/* Gradient borders with vibrant accents */
+/* Gradient borders with light accents */
 .gradient-border {
   position: relative;
-  background: linear-gradient(135deg, #1a1d2b 60%, #23253a 100%);
+  background: linear-gradient(135deg, #f7f9ff 60%, #f0ecff 100%); /* pastel blue to light purple */
   border-radius: 0.75rem;
 }
 
@@ -149,7 +201,7 @@
   position: absolute;
   inset: 0;
   padding: 2px;
-  background: linear-gradient(120deg, #ff4ecd, #a084f7, #3b82f6, #ff9900 90%);
+  background: linear-gradient(120deg, #cce2f6, #e6d9fa, #f4f6ff 90%); /* pastel blue, light purple, enamel white */
   border-radius: inherit;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
@@ -157,14 +209,14 @@
   -webkit-mask-composite: destination-out;
 }
 
-/* Vibrant hover effects */
+/* Professional hover effects */
 .hover-lift {
   transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s cubic-bezier(.4,0,.2,1);
 }
 
 .hover-lift:hover {
   transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 8px 32px 0 rgba(160, 132, 247, 0.18), 0 0 16px 2px #ff4ecd66;
+  box-shadow: 0 8px 32px 0 rgba(204, 226, 246, 0.35), 0 0 16px 2px rgba(230, 217, 250, 0.35);
 }
 
 .hover-scale {
@@ -177,20 +229,20 @@
 
 /* Glass effect */
 .glass {
-  background: rgba(26, 29, 43, 0.7);
+  background: rgba(247, 249, 255, 0.7); /* enamel + pastel blue */
   backdrop-filter: blur(20px) saturate(180%);
-  border: 1.5px solid rgba(160, 132, 247, 0.18);
-  box-shadow: 0 4px 32px 0 rgba(255, 78, 205, 0.10), 0 1.5px 4px 0 rgba(21,23,40,0.10);
+  border: 1.5px solid rgba(204, 226, 246, 0.35);
+  box-shadow: 0 4px 32px 0 rgba(204, 226, 246, 0.25), 0 1.5px 4px 0 rgba(230, 217, 250, 0.18);
 }
 
-/* Vibrant shadow */
+/* Professional shadow */
 .shadow-elevated {
-  box-shadow: 0 4px 32px 0 rgba(160, 132, 247, 0.10), 0 1.5px 4px 0 rgba(255, 78, 205, 0.10);
+  box-shadow: 0 4px 32px 0 rgba(204, 226, 246, 0.25), 0 1.5px 4px 0 rgba(230, 217, 250, 0.18);
 }
 
-/* Vibrant button styles */
+/* Baby Pink/Grey button styles */
 .btn-primary {
-  background: linear-gradient(90deg, #ff4ecd, #a084f7 30%, #3b82f6 70%, #ff9900 100%);
+  background: linear-gradient(90deg, #f8bbd9, #cce2f6 50%, #fce4ec 100%); /* pink to pastel blue to light pink */
   color: #fff;
   border: none;
   padding: 12px 28px;
@@ -198,19 +250,18 @@
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.2s cubic-bezier(.4,0,.2,1);
-  box-shadow: 0 2px 12px rgba(160, 132, 247, 0.18), 0 0 8px 1px #ff4ecd99;
-  text-shadow: 0 0 4px #a084f799;
+  box-shadow: 0 2px 12px rgba(248, 187, 217, 0.18), 0 0 8px 1px rgba(204, 226, 246, 0.35);
 }
 
 .btn-primary:hover {
   filter: brightness(1.08);
-  box-shadow: 0 4px 24px rgba(255, 78, 205, 0.22), 0 0 16px 2px #ff990099;
+  box-shadow: 0 4px 24px rgba(248, 187, 217, 0.22), 0 0 16px 2px rgba(230, 217, 250, 0.45);
 }
 
 .btn-secondary {
-  background: linear-gradient(90deg, #2d334a, #3b82f6 80%);
-  color: #a084f7;
-  border: 1px solid #a084f7;
+  background: linear-gradient(90deg, #f7f9ff, #e6d9fa 80%);
+  color: #5a6a85; /* soft slate */
+  border: 1px solid #cce2f6;
   padding: 12px 28px;
   border-radius: 0.75rem;
   font-weight: 600;
@@ -219,24 +270,66 @@
 }
 
 .btn-secondary:hover {
-  background: #a084f7;
-  color: #2d334a;
+  background: #f8bbd9;
+  color: #fff;
 }
 
 /* Card shadow */
 .card {
-  box-shadow: 0 2px 16px 0 rgba(160, 132, 247, 0.10);
+  box-shadow: 0 2px 16px 0 rgba(248, 187, 217, 0.10);
   border-radius: 0.75rem;
-  background: linear-gradient(135deg, #1a1d2b 60%, #23253a 100%);
+  background: linear-gradient(135deg, #f7f9ff 60%, #f0ecff 100%);
 }
 
-/* Vibrant badge */
+/* Baby Pink/Grey badge */
 .badge {
-  background: linear-gradient(90deg, #ff4ecd 0%, #a084f7 40%, #3b82f6 80%, #ff9900 100%);
-  color: #151728;
+  background: linear-gradient(90deg, #f8bbd9 0%, #cce2f6 50%, #e6d9fa 100%);
+  color: #4b5970; /* soft slate */
   font-weight: 600;
   border-radius: 0.5rem;
-  box-shadow: 0 0 8px 1px #a084f799;
+  box-shadow: 0 0 8px 1px rgba(204, 226, 246, 0.35);
+}
+
+/* Custom heading styles */
+.heading-primary {
+  color: hsl(var(--heading-primary));
+}
+
+.heading-secondary {
+  color: hsl(var(--heading-secondary));
+}
+
+.name-text {
+  color: hsl(var(--name-color));
+}
+
+.title-text {
+  color: hsl(var(--title-color));
+}
+
+/* Additional accent colors */
+.text-accent-baby-pink {
+  color: hsl(var(--accent-baby-pink));
+}
+
+.text-accent-soft-grey {
+  color: hsl(var(--accent-soft-grey));
+}
+
+.text-accent-light-pink {
+  color: hsl(var(--accent-light-pink));
+}
+
+.text-accent-pale-grey {
+  color: hsl(var(--accent-pale-grey));
+}
+
+.text-accent-dusty-pink {
+  color: hsl(var(--accent-dusty-pink));
+}
+
+.text-accent-warm-grey {
+  color: hsl(var(--accent-warm-grey));
 }
 
 @layer base {

@@ -60,15 +60,15 @@ const PortfolioContent = () => {
     semiconductor: [
       'Advanced Semiconductor Packaging',
       'Advanced Interconnection Materials Research',
-      'Semiconductor Backend Process (Wire bonding, Die attach, Flip chip technology)',
+      'Wire bonding, Die attach, Flip chip technology',
       'Transient Liquid Phase Sintering',
       'Power Electronics Prototyping',
-      'Thermal Analysis (DSC) and Rheology Analysis',
+      'Thermal Analysis and Rheology Analysis',
       'Analytical Microscopy and Imaging systems (SAM,SEM,EDX)',
       'Electrical measurement devices and techniques'
     ],
     testing: [
-      'EMI/EMC Validation (BCI, Radiated Emissions/Immunity, ESD',
+      'EMI/EMC Validation (BCI, Radiated Emissions/Immunity, ESD)',
       'ISO 17025, CISPR 25, ISO 11452 -1/2/4 Compliance',
       'RF interference analysis and root cause investigation',
       'Automotive Electronics Testing',
@@ -77,10 +77,10 @@ const PortfolioContent = () => {
       'Signal Integrity Analysis'
     ],
     programming: [
-      'Python (Automation scripts for data processing and reporting)',
-      'VBA Development (Excel Automation)',
-      'Confluence (Documentation and knowledge base setup)',
-      'Tableau (Dashboards for backend deviation decision support)',
+      'Python ',
+      'VBA Development',
+      'Confluence',
+      'Tableau',
       'KiCAD Design',
       'LTSpice',
       'MATLAB',
@@ -101,9 +101,22 @@ const PortfolioContent = () => {
 
   const experience = [
     {
+      title: language === 'en' ? 'AI Engineer (Working Student)' : 'Forschungsingenieur (Werkstudentin)',
+      company: 'Infineon Technologies',
+      period: language === 'en' ? 'October 2025 - Present' : 'Oktober 2025 - Heute',
+      location: 'Regensburg, Germany',
+      responsibilities: language === 'en' ? [
+        'Supporting AI scouting initiatives for Backend development, focusing on evaluating emerging technologies and automation opportunities.',
+        'Gained hands-on experience with AI tools for data analysis, project exploration and identifying potential development topics in early-stage semiconductor projects.',
+      
+      ] : ['Unterstützte AI-Scouting-Initiativen im Bereich Backend-Entwicklung, indem wir sich auf die Bewertung von neuartigen Technologien und Automatisierungschancen konzentrierten.',
+        'Erstehandige Praxiserfahrung mit AI-Tools für Datenanalyse, Projekt-Erkundenung und Identifizierung von potenziellen Entwicklungsaufgaben in frühstadien semikondutktorbasierten Projekten.',
+      ]
+    },
+    {
       title: language === 'en' ? 'Research Engineer (Master Thesis)' : 'Forschungsingenieur (Masterarbeit)',
       company: 'Infineon Technologies',
-      period: language === 'en' ? 'March 2025 - Present' : 'März 2025 - Heute',
+      period: language === 'en' ? 'March 2025 - September 2025' : 'März 2025 - September 2025',
       location: 'Regensburg, Germany',
       responsibilities: language === 'en' ? [
         'Leading research on Transient liquid phase sintering for stable die attach interconnection with bare Copper surfaces',
@@ -116,7 +129,7 @@ const PortfolioContent = () => {
       ]
     },
     {
-      title: language === 'en' ? 'Quality Engineer (Working Student)' : 'Qualitätsingenieur (Werkstudent)',
+      title: language === 'en' ? 'Quality Engineer (Working Student)' : 'Qualitätsingenieur (Werkstudentin)',
       company: 'Infineon Technologies',
       period: language === 'en' ? 'February 2024 - January 2025' : 'Februar 2024 - Januar 2025',
       location: 'Regensburg, Germany',
@@ -374,7 +387,7 @@ const PortfolioContent = () => {
               <img
                 src={myAvatar}
                 alt="Prabhasa Javvaji"
-                className="w-48 h-64 md:w-56 md:h-72 rounded-2xl mx-auto object-contain border-4 border-primary animate-glow shadow-elevated bg-card/80"
+                className="w-48 h-64 md:w-56 md:h-72 rounded-2xl mx-auto object-contain border-4 border-primary shadow-elevated bg-card/80 animate-white-glow border-blink-white"
                 onError={(e) => {
                   e.currentTarget.src = myAvatar;
                 }}
@@ -382,10 +395,10 @@ const PortfolioContent = () => {
             </div>
 
             {/* Hero Content */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-gradient-to-r from-primary via-accent to-foreground bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 name-text">
               {t('hero.title')}
             </h1>
-            <p className="text-xl md:text-2xl text-primary mb-4 font-semibold">
+            <p className="text-xl md:text-2xl title-text mb-4 font-semibold">
               {t('hero.subtitle')}
             </p>
             <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto">
@@ -456,7 +469,7 @@ const PortfolioContent = () => {
       <section id="about" className="py-20 relative bg-card/90 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 heading-primary">
               {t('about.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -466,15 +479,15 @@ const PortfolioContent = () => {
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
-                <div className="text-4xl font-bold text-primary mb-2">7+</div>
+                <div className="text-4xl font-bold heading-primary mb-2">7+</div>
                 <div className="text-muted-foreground font-medium">{language === 'en' ? 'Years Experience' : 'Jahre Erfahrung'}</div>
               </div>
               <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
-                <div className="text-4xl font-bold text-accent mb-2">2</div>
+                <div className="text-4xl font-bold heading-secondary mb-2">2</div>
                 <div className="text-muted-foreground font-medium">{language === 'en' ? 'Top Companies' : 'Top-Unternehmen'}</div>
               </div>
               <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
-                <div className="text-4xl font-bold text-primary mb-2">4</div>
+                <div className="text-4xl font-bold heading-primary mb-2">4</div>
                 <div className="text-muted-foreground font-medium">{language === 'en' ? 'Major Projects' : 'Große Projekte'}</div>
               </div>
             </div>
@@ -491,7 +504,7 @@ const PortfolioContent = () => {
       <section id="skills" className="py-20 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 heading-primary">
               {t('skills.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -501,13 +514,13 @@ const PortfolioContent = () => {
             {/* Semiconductor Skills */}
             <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
               <CardHeader className="text-center">
-                <Zap className="w-12 h-12 text-primary mx-auto mb-4" />
-                <CardTitle className="text-primary">{t('skills.semiconductor')}</CardTitle>
+                <Zap className="w-12 h-12 text-accent-baby-pink mx-auto mb-4" />
+                <CardTitle className="heading-secondary">{t('skills.semiconductor')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.semiconductor.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-primary/10 transition-colors">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 text-center bg-secondary/80 text-secondary-foreground hover:bg-primary/10 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -518,13 +531,13 @@ const PortfolioContent = () => {
             {/* Testing Skills */}
             <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
               <CardHeader className="text-center">
-                <Shield className="w-12 h-12 text-accent mx-auto mb-4" />
-                <CardTitle className="text-accent">{t('skills.testing')}</CardTitle>
+                <Shield className="w-12 h-12 text-accent-soft-grey mx-auto mb-4" />
+                <CardTitle className="heading-secondary">{t('skills.testing')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.testing.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-accent/10 transition-colors">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 text-center bg-secondary/80 text-secondary-foreground hover:bg-accent/10 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -536,12 +549,12 @@ const PortfolioContent = () => {
             <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
               <CardHeader className="text-center">
                 <Code className="w-12 h-12 text-primary mx-auto mb-4" />
-                <CardTitle className="text-primary">{t('skills.programming')}</CardTitle>
+                <CardTitle className="heading-secondary">{t('skills.programming')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.programming.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-primary/10 transition-colors">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 text-center bg-secondary/80 text-secondary-foreground hover:bg-primary/10 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -552,13 +565,13 @@ const PortfolioContent = () => {
             {/* Quality Skills */}
             <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
               <CardHeader className="text-center">
-                <Database className="w-12 h-12 text-accent mx-auto mb-4" />
-                <CardTitle className="text-accent">{t('skills.quality')}</CardTitle>
+                <Database className="w-12 h-12 text-accent-light-pink mx-auto mb-4" />
+                <CardTitle className="heading-secondary">{t('skills.quality')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   {technicalSkills.quality.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 bg-secondary/80 text-secondary-foreground hover:bg-accent/10 transition-colors">
+                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 text-center bg-secondary/80 text-secondary-foreground hover:bg-accent/10 transition-colors">
                       {skill}
                     </Badge>
                   ))}
@@ -573,7 +586,7 @@ const PortfolioContent = () => {
       <section id="projects" className="py-20 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 heading-primary">
               {t('projects.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -584,7 +597,7 @@ const PortfolioContent = () => {
               <Card key={index} className="gradient-border hover-lift h-full bg-secondary/90 card">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-4">
-                    <CardTitle className="text-xl text-primary">{project.title}</CardTitle>
+                    <CardTitle className="text-xl heading-secondary">{project.title}</CardTitle>
                     <div className="flex flex-col items-end space-x-2">
                       <Badge variant={project.status === (language === 'en' ? 'Ongoing' : 'Laufend') ? "default" : "secondary"}>
                         {project.status}
@@ -616,7 +629,7 @@ const PortfolioContent = () => {
       <section id="experience" className="py-20 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 heading-primary">
               {t('experience.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -639,7 +652,7 @@ const PortfolioContent = () => {
                     <CardHeader>
                       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                         <div>
-                          <CardTitle className="text-xl text-primary">{exp.title}</CardTitle>
+                          <CardTitle className="text-xl heading-secondary">{exp.title}</CardTitle>
                           <CardDescription className="text-lg font-medium">
                             {exp.company}
                           </CardDescription>
@@ -678,7 +691,7 @@ const PortfolioContent = () => {
       <section id="education" className="py-20 bg-card/90">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 heading-primary">
               {t('education.title')}
               <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
             </h2>
@@ -695,7 +708,7 @@ const PortfolioContent = () => {
                     <div className="flex-1">
                       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                         <div>
-                          <CardTitle className="text-xl text-primary">{edu.degree}</CardTitle>
+                          <CardTitle className="text-xl heading-secondary">{edu.degree}</CardTitle>
                           <CardDescription className="text-lg font-medium">
                             {edu.field}
                           </CardDescription>
@@ -731,7 +744,7 @@ const PortfolioContent = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 heading-primary">
                 {t('contact.title')}
                 <div className="w-20 h-1 bg-primary mx-auto mt-4"></div>
               </h2>

@@ -27,7 +27,7 @@ const translations = {
     
     // About Section
     'about.title': 'About Me',
-    'about.description': "I am a Electrical and Microsystems Engineer with a strong focus on semiconductor packaging, EMI/EMC validation, quality management and process automation. With hands-on experience at Infineon Technologies and Bosch, I bring practical engineering solutions to complex challenges in high-tech manufacturing. I help semiconductor and automotive companies improve reliability, optimize backend processes, and ensure compliance through data-driven approaches. My expertise spans die-attach technologies, failure analysis and developing automated tools using Python, VBA and Tableau. I thrive in cross-functional teams and bring a proven ability to deliver results in fast-paced, quality-critical environments. I’m driven to contribute where innovation, precision and performance matter most.",
+    'about.description': "I am an Electrical and Microsystems Engineer specializing in semiconductor packaging, EMI/EMC validation, and quality management. I design reliable backend assembly processes and data-driven test strategies that improve yield, accelerate qualification, and ensure compliance. At Infineon Technologies and previously at Bosch, I have delivered hands-on solutions across die-attach (sintering, solder), reliability and failure analysis, and production automation. I build tools in Python, VBA, and Tableau to automate reporting, trace defects, and scale insights to manufacturing. I thrive in cross-functional environments, translating research into robust engineering outcomes where reliability, precision, and performance matter.",
     
     // Skills Section
     'skills.title': 'Technical Skills',
