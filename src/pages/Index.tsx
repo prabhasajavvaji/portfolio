@@ -377,6 +377,7 @@ const PortfolioContent = () => {
         </div>
       </header>
 
+
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-gradient-to-br from-background via-secondary to-accent/10">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-transparent"></div>
