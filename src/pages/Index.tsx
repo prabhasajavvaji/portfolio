@@ -480,7 +480,7 @@ const PortfolioContent = () => {
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
-                <div className="text-4xl font-bold heading-primary mb-2">7+</div>
+                <div className="text-4xl font-bold heading-primary mb-2">5</div>
                 <div className="text-muted-foreground font-medium">{language === 'en' ? 'Years Experience' : 'Jahre Erfahrung'}</div>
               </div>
               <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
