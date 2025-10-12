@@ -186,7 +186,7 @@ const PortfolioContent = () => {
         'Advanced research on die attach performance for power electronics, focusing on intermetallic phase formation and bond reliability.' :
         'Fortgeschrittene Forschung zur Die-Attach-Leistung für Leistungselektronik mit Fokus auf intermetallische Phasenbildung und Bindungszuverlässigkeit.',
       technologies: ['Die Attach Process', 'Transient Liquid Phase Sintering', 'Materials Research', 'High resolution material characterization tools', 'DSC'],
-      status: language === 'en' ? 'Ongoing' : 'Laufend',
+      status: language === 'en' ? 'Completed' : 'Abgeschlossen',
       date: '2025'
     },
     {
