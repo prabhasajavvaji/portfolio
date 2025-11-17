@@ -8,49 +8,57 @@
 /* Professional dark theme with clean blue/gray palette */
 @layer base {
   :root {
-    --background: 330 60% 75%;  /* keep baby pink background */
-    --foreground: 230 20% 22%;  /* soft slate for contrast, not too dark */
+    --background: 188 55% 94%;  /* light peacock wash (less white) */
+    --foreground: 210 20% 22%;  /* soft slate for professional contrast */
 
-    /* Enamel white, Pastel blue, Light purple palette */
-    --card: 60 20% 96%;            /* enamel white */
-    --card-foreground: 230 20% 24%;
+    /* White + Teal/Turquoise palette */
+    --card: 0 0% 100%;             /* white */
+    --card-foreground: 210 20% 24%;
 
-    --popover: 265 60% 96%;        /* light purple surface */
-    --popover-foreground: 230 20% 24%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 24%;
 
-    --primary: 330 60% 75%;        /* keep baby pink primary */
+    --primary: 188 75% 32%;        /* peacock teal */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 60% 92%;      /* pastel blue */
-    --secondary-foreground: 230 25% 28%;
+    --secondary: 200 55% 90%;      /* pale peacock blue */
+    --secondary-foreground: 210 25% 28%;
 
-    --muted: 230 40% 92%;          /* soft pastel blue/purple */
-    --muted-foreground: 230 25% 35%;
+    --muted: 190 30% 94%;          /* soft aqua/teal tint */
+    --muted-foreground: 210 25% 35%;
 
-    --heading-primary: 230 25% 22%;     /* soft slate for headings */
-    --heading-secondary: 265 25% 35%;   /* muted lavender for subheadings */
-    --name-color: 230 25% 20%;          /* slightly deeper for emphasis */
-    --title-color: 230 20% 35%;         /* muted title color */
+    --heading-primary: 210 25% 22%;     /* soft slate for headings */
+    --heading-secondary: 210 20% 35%;   /* muted slate for subheadings */
+    --name-color: 210 25% 20%;          /* slightly deeper for emphasis */
+    --title-color: 210 20% 35%;         /* muted title color */
 
-    --accent-baby-pink: 330 60% 75%;    /* keep */
-    --accent-soft-grey: 210 55% 70%;    /* repurposed to pastel blue */
-    --accent-light-pink: 330 50% 80%;   /* keep */
-    --accent-pale-grey: 265 60% 85%;    /* repurposed to light purple */
-    --accent-dusty-pink: 330 40% 70%;   /* keep */
-    --accent-warm-grey: 60 20% 90%;     /* repurposed to enamel white tint */
+    /* Peacock palette */
+    --peacock-teal: 188 75% 32%;        /* deep teal */
+    --peacock-blue: 201 80% 38%;        /* vibrant peacock blue */
+    --peacock-emerald: 160 84% 34%;     /* emerald green */
+    --peacock-violet: 262 70% 50%;      /* royal violet */
+    --peacock-gold: 46 65% 53%;         /* regal gold */
 
-    --accent: 210 40% 80%;              /* default accent to pastel blue */
-    --accent-foreground: 230 20% 22%;
+    /* Map existing accent tokens to peacock hues */
+    --accent-baby-pink: var(--peacock-teal);
+    --accent-soft-grey: 160 60% 40%;    /* emerald-ish for 'soft grey' token */
+    --accent-light-pink: var(--peacock-blue);
+    --accent-pale-grey: 190 45% 85%;    /* pale aqua */
+    --accent-dusty-pink: var(--peacock-violet);
+    --accent-warm-grey: 46 65% 53%;     /* gold */
 
-    --highlight: 330 60% 75%;           /* keep pink highlights */
-    --highlight-foreground: 0 0% 100%;
+    --accent: 188 60% 45%;              /* default peacock accent */
+    --accent-foreground: 210 20% 22%;
+
+    --highlight: 46 65% 53%;            /* gold highlight */
+    --highlight-foreground: 0 0% 100%;  /* white on gold */
 
     --destructive: 0 80% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 40% 85%;
-    --input: 210 40% 88%;
-    --ring: 265 40% 70%;
+    --border: 188 30% 85%;
+    --input: 188 30% 88%;
+    --ring: 188 60% 45%;
 
     --radius: 0.75rem;
   }
@@ -61,7 +69,11 @@
 
   body {
     @apply bg-background text-foreground font-manrope;
-    background: #f8bbd9; /* keep pink */
+    background:
+      radial-gradient(1200px circle at 10% 0%, rgba(20, 184, 166, 0.18), transparent 60%),
+      radial-gradient(900px circle at 90% 20%, rgba(37, 99, 235, 0.14), transparent 60%),
+      radial-gradient(800px circle at 50% 90%, rgba(109, 40, 217, 0.10), transparent 60%),
+      linear-gradient(180deg, #e0fffb 0%, #e0f2fe 45%, #ede9fe 90%); /* peacock blend, less white */
     color: hsl(var(--foreground));
   }
 
@@ -76,16 +88,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #e6f0fb; /* pastel blue */
+  background: #eef2ff; /* very light blue */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d9e7ff; /* lighter pastel blue */
+  background: #14b8a6; /* teal */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #e6d9fa; /* light purple */
+  background: #2563eb; /* blue */
 }
 
 /* Animations */
@@ -111,10 +123,10 @@
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(204, 226, 246, 0.35); /* pastel blue glow */
+    box-shadow: 0 0 15px rgba(20, 184, 166, 0.28); /* teal glow */
   }
   50% {
-    box-shadow: 0 0 25px rgba(230, 217, 250, 0.45); /* light purple glow */
+    box-shadow: 0 0 25px rgba(109, 40, 217, 0.30); /* violet glow */
   }
 }
 
@@ -192,7 +204,7 @@
 /* Gradient borders with light accents */
 .gradient-border {
   position: relative;
-  background: linear-gradient(135deg, #f7f9ff 60%, #f0ecff 100%); /* pastel blue to light purple */
+  background: linear-gradient(135deg, #ffffff 60%, #f0fdfa 100%); /* white to light aqua */
   border-radius: 0.75rem;
 }
 
@@ -201,7 +213,7 @@
   position: absolute;
   inset: 0;
   padding: 2px;
-  background: linear-gradient(120deg, #cce2f6, #e6d9fa, #f4f6ff 90%); /* pastel blue, light purple, enamel white */
+  background: linear-gradient(120deg, #14b8a6, #2563eb, #6d28d9, #f4f6ff 90%); /* teal → blue → violet → white */
   border-radius: inherit;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
@@ -216,7 +228,7 @@
 
 .hover-lift:hover {
   transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 8px 32px 0 rgba(204, 226, 246, 0.35), 0 0 16px 2px rgba(230, 217, 250, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(20, 184, 166, 0.20), 0 0 16px 2px rgba(37, 99, 235, 0.18);
 }
 
 .hover-scale {
@@ -229,20 +241,20 @@
 
 /* Glass effect */
 .glass {
-  background: rgba(247, 249, 255, 0.7); /* enamel + pastel blue */
+  background: rgba(247, 252, 251, 0.7); /* white + light peacock */
   backdrop-filter: blur(20px) saturate(180%);
-  border: 1.5px solid rgba(204, 226, 246, 0.35);
-  box-shadow: 0 4px 32px 0 rgba(204, 226, 246, 0.25), 0 1.5px 4px 0 rgba(230, 217, 250, 0.18);
+  border: 1.5px solid rgba(20, 184, 166, 0.20);
+  box-shadow: 0 4px 32px 0 rgba(20, 184, 166, 0.18), 0 1.5px 4px 0 rgba(37, 99, 235, 0.16);
 }
 
 /* Professional shadow */
 .shadow-elevated {
-  box-shadow: 0 4px 32px 0 rgba(204, 226, 246, 0.25), 0 1.5px 4px 0 rgba(230, 217, 250, 0.18);
+  box-shadow: 0 4px 32px 0 rgba(20, 184, 166, 0.18), 0 1.5px 4px 0 rgba(37, 99, 235, 0.14);
 }
 
-/* Baby Pink/Grey button styles */
+/* Peacock button styles */
 .btn-primary {
-  background: linear-gradient(90deg, #f8bbd9, #cce2f6 50%, #fce4ec 100%); /* pink to pastel blue to light pink */
+  background: linear-gradient(90deg, #0f766e, #2563eb 50%, #6d28d9 100%); /* teal → blue → violet */
   color: #fff;
   border: none;
   padding: 12px 28px;
@@ -250,18 +262,18 @@
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.2s cubic-bezier(.4,0,.2,1);
-  box-shadow: 0 2px 12px rgba(248, 187, 217, 0.18), 0 0 8px 1px rgba(204, 226, 246, 0.35);
+  box-shadow: 0 2px 12px rgba(20, 184, 166, 0.22), 0 0 8px 1px rgba(37, 99, 235, 0.20);
 }
 
 .btn-primary:hover {
   filter: brightness(1.08);
-  box-shadow: 0 4px 24px rgba(248, 187, 217, 0.22), 0 0 16px 2px rgba(230, 217, 250, 0.45);
+  box-shadow: 0 4px 24px rgba(20, 184, 166, 0.26), 0 0 16px 2px rgba(109, 40, 217, 0.28);
 }
 
 .btn-secondary {
-  background: linear-gradient(90deg, #f7f9ff, #e6d9fa 80%);
+  background: linear-gradient(90deg, #ffffff, #e0f2fe 80%); /* white → soft blue */
   color: #5a6a85; /* soft slate */
-  border: 1px solid #cce2f6;
+  border: 1px solid #93c5fd;
   padding: 12px 28px;
   border-radius: 0.75rem;
   font-weight: 600;
@@ -270,24 +282,26 @@
 }
 
 .btn-secondary:hover {
-  background: #f8bbd9;
+  background: #0ea5e9;
   color: #fff;
 }
 
 /* Card shadow */
 .card {
-  box-shadow: 0 2px 16px 0 rgba(248, 187, 217, 0.10);
+  box-shadow: 0 2px 16px 0 rgba(20, 184, 166, 0.12);
   border-radius: 0.75rem;
-  background: linear-gradient(135deg, #f7f9ff 60%, #f0ecff 100%);
+  background:
+    linear-gradient(135deg, rgba(14, 116, 144, 0.06) 0%, rgba(37, 99, 235, 0.06) 100%),
+    linear-gradient(135deg, #ecfeff 40%, #e0e7ff 100%); /* more peacock tint */
 }
 
-/* Baby Pink/Grey badge */
+/* Peacock badge */
 .badge {
-  background: linear-gradient(90deg, #f8bbd9 0%, #cce2f6 50%, #e6d9fa 100%);
+  background: linear-gradient(90deg, #0f766e 0%, #2563eb 50%, #059669 100%); /* teal → blue → emerald */
   color: #4b5970; /* soft slate */
   font-weight: 600;
   border-radius: 0.5rem;
-  box-shadow: 0 0 8px 1px rgba(204, 226, 246, 0.35);
+  box-shadow: 0 0 8px 1px rgba(20, 184, 166, 0.22);
 }
 
 /* Custom heading styles */

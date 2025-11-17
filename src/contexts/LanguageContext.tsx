@@ -22,12 +22,12 @@ const translations = {
     // Hero Section
     'hero.title': 'Prabhasa Javvaji',
     'hero.subtitle': 'Electrical & Microsystems Engineer',
-    'hero.description': 'Semiconductor Packaging  | EMI/EMC Validation | Quality Management',
-    'hero.company': 'Research Engineer at Infineon Technologies | Ex-Bosch',
+    'hero.description': 'Semiconductor Packaging  | EMI/EMC Validation | Quality Management | Artificial Intelligence',
+    'hero.company': 'AI Engineer at Infineon Technologies | Bosch',
     
     // About Section
     'about.title': 'About Me',
-    'about.description': "I am an Electrical and Microsystems Engineer specializing in semiconductor packaging, EMI/EMC validation, and quality management. I design reliable backend assembly processes and data-driven test strategies that improve yield, accelerate qualification, and ensure compliance. At Infineon Technologies and previously at Bosch, I have delivered hands-on solutions across die-attach (sintering, solder), reliability and failure analysis, and production automation. I build tools in Python, VBA, and Tableau to automate reporting, trace defects, and scale insights to manufacturing. I thrive in cross-functional environments, translating research into robust engineering outcomes where reliability, precision, and performance matter.",
+    'about.description': "Versatile engineer with a strong blend of AI-driven innovation, semiconductor backend expertise, EMI/EMC and hands-on experience across research, quality, and testing domains. Demonstrated capability in advanced materials research and reliability analysis using a range of microstructural, thermal, and failure-analysis techniques, alongside AI-based technology scouting to support early-stage semiconductor development. Skilled in developing automated data solutions, dashboards, and knowledge systems, as well as leading ISO and CISPR-compliant EMC testing activities for automotive applications. Known for rapidly adapting to complex technical environments, delivering clear insights, reliable results, and efficient workflows. Brings an analytical mindset and cross-functional approach to drive impactful, high-quality engineering outcomes.",
     
     // Skills Section
     'skills.title': 'Technical Skills',
@@ -72,18 +72,18 @@ const translations = {
     // Hero Section
     'hero.title': 'Prabhasa Javvaji',
     'hero.subtitle': 'Elektrotechnik- und Mikrosystemingenieur',
-    'hero.description': 'Experte für Halbleiterverpackung | EMI/EMC-Validierung | Qualitätsmanagement',
-    'hero.company': 'Forschungsingenieur bei Infineon Technologies | Ex-Bosch',
+    'hero.description': 'Experte für Halbleiterverpackung | EMI/EMC-Validierung | Qualitätsmanagement | Künstliche Intelligenz',
+    'hero.company': 'KI-Ingenieur bei Infineon Technologies | Bosch',
     
     // About Section
     'about.title': 'Über mich',
-    'about.description': 'Ich bin ein leidenschaftlicher Elektrotechnik- und Mikrosystemingenieur mit Spezialisierung auf Halbleiterverpackung, EMI/EMC-Validierung und Qualitätsmanagement. Derzeit führe ich fortgeschrittene Forschung bei Infineon Technologies zur Die-Attach-Leistung mit transienter Flüssigphasensintersinterung für hochzuverlässige Leistungselektronik durch.',
+    'about.description': 'Vielseitiger Ingenieur mit einer starken Mischung aus KI-getriebener Innovation, Backend-Expertise im Halbleiterbereich, EMI/EMV und praxisnaher Erfahrung in Forschung, Qualität und Test. Nachgewiesene Kompetenz in der Werkstoffforschung und Zuverlässigkeitsanalyse mit einem breiten Spektrum mikrostruktureller, thermischer und ausfallanalytischer Verfahren sowie KI-gestütztem Technology-Scouting zur Unterstützung der frühen Halbleiterentwicklung. Erfahren in der Entwicklung automatisierter Datenlösungen, Dashboards und Wissenssysteme sowie in der Leitung ISO- und CISPR-konformer EMV-Prüfungen für Automotive-Anwendungen. Bekannt für die schnelle Anpassung an komplexe technische Umgebungen und für klare Einsichten, verlässliche Ergebnisse und effiziente Workflows. Bringt eine analytische Denkweise und einen funktionsübergreifenden Ansatz mit, um wirkungsstarke, qualitativ hochwertige Ingenieursergebnisse zu erzielen.',
     
     // Skills Section
     'skills.title': 'Technische Fähigkeiten',
     'skills.semiconductor': 'Halbleitertechnologie',
     'skills.testing': 'Prüfung & Validierung',
-    'skills.programming': 'Programmierung & Automatisierung',
+    'skills.programming': 'Programmierung, Automatisierung & KI',
     'skills.quality': 'Qualitätsmanagement',
     
     // Experience Section

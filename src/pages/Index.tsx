@@ -24,12 +24,41 @@ import {
   Zap,
   Database,
   Shield,
-  Download
+  Download,
+  // Additional icons for skills
+  Code2,
+  BarChart3,
+  LineChart,
+  CircuitBoard,
+  FileSpreadsheet,
+  Package,
+  BatteryCharging,
+  Thermometer,
+  Flame,
+  Gauge,
+  Search,
+  ShieldCheck,
+  BadgeCheck,
+  FlaskConical,
+  Car,
+  GitBranch,
+  Braces,
+  BookText,
+  Activity,
+  Atom,
+  Link,
+  AlertTriangle,
+  ClipboardList,
+  Wrench
 } from "lucide-react";
 import myHeadshot from "../assets/my_headshot.jpg";
 import myAvatar from "../assets/my_avatar.png";
 import myVideo from "../assets/my_video.mp4";
 import myCV from "../assets/Prabhasa_Javvaji_CV.pdf";
+import infineonLogo from "../assets/infineon_logo.png";
+import boschLogo from "../assets/bosch_logo.png";
+import amritaLogo from "../assets/amrita_logo.png";
+import othLogo from "../assets/Hochschule_Amberg-Weiden_Logo.png";
 
 // Custom Xing Icon Component
 const XingIcon = ({ className }: { className?: string }) => (
@@ -47,6 +76,18 @@ const PortfolioContent = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, toggleLanguage, t } = useLanguage();
 
+  // Load Devicon CSS once for brand icons
+  useEffect(() => {
+    const href = "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css";
+    const already = document.querySelector(`link[href="${href}"]`);
+    if (!already) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    }
+  }, []);
+
   const navigationItems = [
     { id: 'about', label: t('nav.about') },
     { id: 'skills', label: t('nav.skills') },
@@ -56,61 +97,497 @@ const PortfolioContent = () => {
     { id: 'contact', label: t('nav.contact') }
   ];
 
-  const technicalSkills = {
-    semiconductor: [
-      'Advanced Semiconductor Packaging',
-      'Advanced Interconnection Materials Research',
-      'Wire bonding, Die attach, Flip chip technology',
-      'Transient Liquid Phase Sintering',
-      'Power Electronics Prototyping',
-      'Thermal Analysis and Rheology Analysis',
-      'Analytical Microscopy and Imaging systems (SAM,SEM,EDX)',
-      'Electrical measurement devices and techniques'
-    ],
-    testing: [
-      'EMI/EMC Validation (BCI, Radiated Emissions/Immunity, ESD)',
-      'ISO 17025, CISPR 25, ISO 11452 -1/2/4 Compliance',
-      'RF interference analysis and root cause investigation',
-      'Automotive Electronics Testing',
-      'Failure analysis and defect characterization',
-      'Networking Protocols (CAN/FlexRay/Ethernet)',
-      'Signal Integrity Analysis'
-    ],
-    programming: [
-      'Python ',
-      'VBA Development',
-      'Confluence',
-      'Tableau',
-      'KiCAD Design',
-      'LTSpice',
-      'MATLAB',
-      'LabVIEW',
-      'HTML',
-      'C Programming',
-    ],
-    quality: [
-      'FMEA (Failure Mode and Effects Analysis)',
-      'MRB process (Material Review Board)',
-      'Statistical Process Control (SPC)',
-      'Root Cause Analysis',
-      'Technical Documentation',
-      'Production defect analysis and corrective action processes',
-      'Experience in Internal/External Quality and Technical Audits',
-    ]
+  type SkillItem = { key: string; label: string };
+
+  const buildTechnicalSkills = (lng: 'en' | 'de') => {
+    const isEn = lng === 'en';
+    const S = (key: string, en: string, de: string): SkillItem => ({
+      key,
+      label: isEn ? en : de
+    });
+
+    return {
+      semiconductor: [
+        S('advanced-semiconductor-packaging', 'Advanced Semiconductor Packaging', 'Fortgeschrittene Halbleiterverpackung'),
+        S('advanced-interconnection-materials-research', 'Advanced Interconnection Materials Research', 'Forschung zu fortgeschrittenen Interconnection‑Materialien'),
+        S('wire-bonding-die-attach-flip-chip', 'Wire bonding, Die attach, Flip chip technology', 'Drahtbonden, Die‑Attach, Flip‑Chip‑Technologie'),
+        S('transient-liquid-phase-sintering', 'Transient Liquid Phase Sintering', 'Transiente Flüssigphasensinterung'),
+        S('power-electronics-prototyping', 'Power Electronics Prototyping', 'Prototyping für Leistungselektronik'),
+        S('thermal-and-rheology-analysis', 'Thermal Analysis and Rheology Analysis', 'Thermische Analyse und Rheologie'),
+        S('microscopy-sam-sem-edx', 'Analytical Microscopy and Imaging systems (SAM,SEM,EDX)', 'Analytische Mikroskopie und Bildgebung (SAM, SEM, EDX)'),
+        S('electrical-measurement-techniques', 'Electrical measurement devices and techniques', 'Elektrische Messgeräte und -verfahren'),
+      ],
+      testing: [
+        S('emi-emc-validation', 'EMI/EMC Validation (BCI, Radiated Emissions/Immunity, ESD)', 'EMI/EMV‑Validierung (BCI, Emissionen/Immunität, ESD)'),
+        S('standards-iso17025-cispr25-iso11452', 'ISO 17025, CISPR 25, ISO 11452 -1/2/4 Compliance', 'Konformität mit ISO 17025, CISPR 25, ISO 11452‑1/2/4'),
+        S('rf-interference-analysis', 'RF interference analysis and root cause investigation', 'HF‑Störungsanalyse und Ursachenfindung'),
+        S('automotive-electronics-testing', 'Automotive Electronics Testing', 'Automobil‑Elektroniktests'),
+        S('failure-analysis-defect-characterization', 'Failure analysis and defect characterization', 'Fehleranalyse und Defektcharakterisierung'),
+        S('networking-can-flexray-ethernet', 'Networking Protocols (CAN/FlexRay/Ethernet)', 'Netzwerkprotokolle (CAN/FlexRay/Ethernet)'),
+        S('signal-integrity-analysis', 'Signal Integrity Analysis', 'Signalintegritätsanalyse'),
+      ],
+      programming: [
+        S('python', 'Python', 'Python'),
+        S('vba', 'VBA Development', 'VBA‑Entwicklung'),
+        S('confluence', 'Confluence', 'Confluence'),
+        S('tableau', 'Tableau', 'Tableau'),
+        S('kicad', 'KiCAD Design', 'KiCad‑Design'),
+        S('ltspice', 'LTSpice', 'LTspice'),
+        S('matlab', 'MATLAB', 'MATLAB'),
+        S('labview', 'LabVIEW', 'LabVIEW'),
+        S('html5', 'HTML', 'HTML'),
+        S('c', 'C Programming', 'C‑Programmierung'),
+      ],
+      quality: [
+        S('fmea', 'FMEA (Failure Mode and Effects Analysis)', 'FMEA (Fehlermöglichkeits‑ und Einflussanalyse)'),
+        S('mrb', 'MRB process (Material Review Board)', 'MRB‑Prozess (Material Review Board)'),
+        S('spc-control-chart', 'Statistical Process Control (SPC)', 'Statistische Prozesslenkung (SPC)'),
+        S('root-cause-analysis', 'Root Cause Analysis', 'Ursachenanalyse'),
+        S('technical-documentation', 'Technical Documentation', 'Technische Dokumentation'),
+        S('production-defect-capa', 'Production defect analysis and corrective action processes', 'Produktionsfehleranalyse und Korrekturmaßnahmen'),
+        S('quality-audits', 'Experience in Internal/External Quality and Technical Audits', 'Erfahrung mit internen/externen Qualitäts‑ und Technik‑Audits'),
+      ]
+    };
+  };
+
+  const technicalSkills = buildTechnicalSkills(language);
+
+  // Helper: pick an icon for each skill
+  const getSkillIcon = (category: 'semiconductor' | 'testing' | 'programming' | 'quality', skill: string) => {
+    const cls = "w-4 h-4";
+
+    if (category === 'programming') {
+      if (/python/i.test(skill)) return <Code2 className={cls} />;
+      if (/vba/i.test(skill)) return <FileSpreadsheet className={cls} />;
+      if (/tableau/i.test(skill)) return <BarChart3 className={cls} />;
+      if (/kicad/i.test(skill)) return <CircuitBoard className={cls} />;
+      if (/ltspice/i.test(skill)) return <Zap className={cls} />;
+      if (/matlab/i.test(skill)) return <LineChart className={cls} />;
+      if (/labview/i.test(skill)) return <GitBranch className={cls} />;
+      if (/html/i.test(skill)) return <Code className={cls} />;
+      if (/^c(\s|$)/i.test(skill)) return <Braces className={cls} />;
+      if (/confluence/i.test(skill)) return <BookText className={cls} />;
+      return <Code2 className={cls} />;
+    }
+
+    if (category === 'testing') {
+      if (/emi\/?emc/i.test(skill)) return <ShieldCheck className={cls} />;
+      if (/iso|cispr/i.test(skill)) return <BadgeCheck className={cls} />;
+      if (/RF/i.test(skill)) return <Activity className={cls} />;
+      if (/automotive/i.test(skill)) return <Car className={cls} />;
+      if (/failure/i.test(skill)) return <FlaskConical className={cls} />;
+      if (/networking/i.test(skill)) return <GitBranch className={cls} />;
+      if (/signal integrity/i.test(skill)) return <Activity className={cls} />;
+      return <Shield className={cls} />;
+    }
+
+    if (category === 'semiconductor') {
+      if (/packaging/i.test(skill)) return <Package className={cls} />;
+      if (/interconnection|materials/i.test(skill)) return <Atom className={cls} />;
+      if (/wire bonding|flip chip|die attach/i.test(skill)) return <Link className={cls} />;
+      if (/sintering/i.test(skill)) return <Flame className={cls} />;
+      if (/power electronics/i.test(skill)) return <BatteryCharging className={cls} />;
+      if (/thermal|rheology/i.test(skill)) return <Thermometer className={cls} />;
+      if (/microscop|imaging|sam|sem|edx/i.test(skill)) return <Search className={cls} />;
+      if (/electrical measurement/i.test(skill)) return <Gauge className={cls} />;
+      return <Zap className={cls} />;
+    }
+
+    // quality
+    if (/fmea/i.test(skill)) return <AlertTriangle className={cls} />;
+    if (/mrb/i.test(skill)) return <ClipboardList className={cls} />;
+    if (/statistical|spc/i.test(skill)) return <BarChart3 className={cls} />;
+    if (/root cause/i.test(skill)) return <Search className={cls} />;
+    if (/documentation/i.test(skill)) return <FileText className={cls} />;
+    if (/production defect/i.test(skill)) return <Wrench className={cls} />;
+    if (/audits/i.test(skill)) return <BadgeCheck className={cls} />;
+    return <Database className={cls} />;
+  };
+
+  // Helper: brand icon using Devicon when available
+  const getBrandIcon = (skillRaw: string) => {
+    const skill = skillRaw.trim().toLowerCase();
+    const iconBaseStyle: React.CSSProperties = { fontSize: 18, lineHeight: 1 };
+
+    if (skill.startsWith('python')) {
+      return <i className="devicon-python-plain colored" style={iconBaseStyle} />;
+    }
+    if (skill === 'html' || skill.startsWith('html5')) {
+      return <i className="devicon-html5-plain colored" style={iconBaseStyle} />;
+    }
+    if (skill.startsWith('c programming') || skill === 'c') {
+      return <i className="devicon-c-plain colored" style={iconBaseStyle} />;
+    }
+    if (skill.startsWith('matlab')) {
+      return <i className="devicon-matlab-plain colored" style={iconBaseStyle} />;
+    }
+    if (skill.startsWith('confluence')) {
+      return <i className="devicon-confluence-original colored" style={iconBaseStyle} />;
+    }
+    if (skill.startsWith('tableau')) {
+      // Tableau is available in some Devicon distributions; if missing, fallback handled by caller
+      return <i className="devicon-tableau-plain colored" style={iconBaseStyle} />;
+    }
+    // No brand icon known
+    return null;
+  };
+
+  // Load skill images (png/jpg/svg) using Vite glob import
+  const skillImageMap: Record<string, string> = (() => {
+    const modules = import.meta.glob('../assets/skills/*.{png,jpg,jpeg,svg}', { eager: true, as: 'url' }) as Record<string, string>;
+    return modules;
+  })();
+
+  const normalizeToBase = (text: string) => {
+    return text
+      .toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/\(([^)]*)\)/g, '$1') // drop parentheses
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+  };
+
+  // Exact mapping as provided by the user (normalized key -> slug)
+  const skillSlugMap: Record<string, string> = {
+    // Semiconductor
+    'advanced-semiconductor-packaging': 'advanced-semiconductor-packaging',
+    'advanced-interconnection-materials-research': 'advanced-interconnection-materials-research',
+    'wire-bonding-die-attach-flip-chip-technology': 'wire-bonding-die-attach-flip-chip',
+    'transient-liquid-phase-sintering': 'transient-liquid-phase-sintering',
+    'power-electronics-prototyping': 'power-electronics-prototyping',
+    'thermal-analysis-and-rheology-analysis': 'thermal-and-rheology-analysis',
+    'analytical-microscopy-and-imaging-systems-sam-sem-edx': 'microscopy-sam-sem-edx',
+    'electrical-measurement-devices-and-techniques': 'electrical-measurement-techniques',
+    // Testing
+    'emi-emc-validation-bci-radiated-emissions-immunity-esd': 'emi-emc-validation',
+    'iso-17025-cispr-25-iso-11452-1-2-4-compliance': 'standards-iso17025-cispr25-iso11452',
+    'rf-interference-analysis-and-root-cause-investigation': 'rf-interference-analysis',
+    'automotive-electronics-testing': 'automotive-electronics-testing',
+    'failure-analysis-and-defect-characterization': 'failure-analysis-defect-characterization',
+    'networking-protocols-can-flexray-ethernet': 'networking-can-flexray-ethernet',
+    'signal-integrity-analysis': 'signal-integrity-analysis',
+    // Programming
+    'python': 'python',
+    'vba-development': 'vba',
+    'confluence': 'confluence',
+    'tableau': 'tableau',
+    'kicad-design': 'kicad',
+    'ltspice': 'ltspice',
+    'matlab': 'matlab',
+    'labview': 'labview',
+    'html': 'html5',
+    'c-programming': 'c',
+    // Quality
+    'fmea-failure-mode-and-effects-analysis': 'fmea',
+    'mrb-process-material-review-board': 'mrb',
+    'statistical-process-control-spc': 'spc-control-chart',
+    'root-cause-analysis': 'root-cause-analysis',
+    'technical-documentation': 'technical-documentation',
+    'production-defect-analysis-and-corrective-action-processes': 'production-defect-capa',
+    'experience-in-internal-external-quality-and-technical-audits': 'quality-audits',
+    // Project tech (for future use)
+    'die-attach-process': 'die-attach-process',
+    'materials-research': 'materials-research',
+    'high-resolution-material-characterization-tools': 'material-characterization-tools',
+    'dsc': 'dsc-differential-scanning-calorimetry',
+    'data-analytics': 'data-analytics',
+    'viscometry': 'viscometry',
+    'rheology': 'rheology',
+    'materials-testing': 'materials-testing',
+    'power-electronics': 'power-electronics',
+    'arduino': 'arduino',
+    'control-systems': 'control-systems',
+  };
+
+  // When the mapped slug is missing, try these alternates in order
+  const slugFallbacks: Record<string, string[]> = {
+    'html5': ['html'],
+    'transient-liquid-phase-sintering': ['transient-liquid-phase-sintering2'],
+  };
+
+  const getSkillImage = (skill: string): string | null => {
+    const base = normalizeToBase(skill);
+    const mapped = skillSlugMap[base] || base;
+
+    const trySlugs = [mapped, ...(slugFallbacks[mapped] || [])];
+    for (const candidate of trySlugs) {
+      const match = Object.entries(skillImageMap).find(([path]) => {
+        return new RegExp(`/${candidate}\\.(png|jpg|jpeg|svg)$`).test(path);
+      });
+      if (match) return match[1];
+    }
+
+    // As a last resort, try a loose contains search by important tokens
+    const tokens = base.split('-').filter(Boolean);
+    if (tokens.length > 0) {
+      const matchLoose = Object.entries(skillImageMap).find(([path]) =>
+        tokens.every(tok => path.includes(tok))
+      );
+      if (matchLoose) return matchLoose[1];
+    }
+
+    return null;
+  };
+
+  // Company and Institution logos
+  const getCompanyLogo = (company: string): string | null => {
+    if (/infineon/i.test(company)) return infineonLogo;
+    if (/bosch/i.test(company)) return boschLogo;
+    return null;
+  };
+
+  const getInstitutionLogo = (institution: string): string | null => {
+    if (/amrita/i.test(institution)) return amritaLogo;
+    if (/ostbayerische|hochschule/i.test(institution)) return othLogo;
+    return null;
+  };
+
+  const renderSkillItem = (category: 'semiconductor' | 'testing' | 'programming' | 'quality', skill: string) => {
+    const url = getSkillImage(skill);
+    const fallback = getBrandIcon(skill) ?? getSkillIcon(category, skill);
+    return (
+      <div
+        key={skill}
+        className="flex items-center gap-3 p-2 rounded-lg bg-card/60 border border-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-colors"
+      >
+        <div className="h-10 w-10 rounded-md bg-background/60 flex items-center justify-center overflow-hidden">
+          {url ? <img src={url} alt="" className="h-10 w-10 object-contain" /> : fallback}
+        </div>
+        <span className="text-sm">{skill}</span>
+      </div>
+    );
+  };
+
+  // Render a radial branch from center
+  const renderBranch = (
+    category: 'semiconductor' | 'testing' | 'programming' | 'quality',
+    title: string,
+    Icon: React.ComponentType<{ className?: string }>,
+    skills: string[],
+    angleDeg: number,
+    length: number = 360
+  ) => {
+    return (
+      <div
+        className="absolute left-1/2 top-1/2"
+        style={{ transform: `translate(-50%, -50%) rotate(${angleDeg}deg)` }}
+      >
+        <div className="relative" style={{ width: length, height: 1 }}>
+          <div className="absolute left-0 right-0 top-0 h-[3px] bg-gradient-to-r from-primary/40 via-primary/60 to-primary/20 rounded-full"></div>
+          {/* Cluster at branch end; rotate back for upright content */}
+          <div
+            className="absolute right-0 -top-4 pointer-events-auto"
+            style={{ transform: `rotate(${-angleDeg}deg)` }}
+          >
+            <div className="rounded-xl bg-secondary/95 backdrop-blur-sm border border-primary/10 shadow-elevated px-4 py-3 max-w-xl">
+              <div className="flex items-center gap-2 mb-3">
+                <Icon className="w-5 h-5 text-primary" />
+                <span className="font-semibold heading-secondary">{title}</span>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {skills.map((s) => renderSkillItem(category, s))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  // SVG flowchart graph-like rendering (desktop)
+  const SkillsGraphSvg: React.FC = () => {
+    const width = 1600;
+    const height = 1200;
+    const cx = width / 2;
+    const cy = height / 2;
+
+    // Category anchors in cardinal directions
+    const anchors = {
+      programming: { x: cx, y: cy - 200 },
+      testing: { x: cx + 520, y: cy - 20 },
+      semiconductor: { x: cx, y: cy + 240 },
+      quality: { x: cx - 520, y: cy - 20 },
+    };
+
+    // Skill card size (logo + label) - larger for visibility
+    const cardW = 170;
+    const cardH = 100;
+
+    // Layout helpers
+    const layoutRow = (items: number, cols: number, centerX: number, y: number, gapX = 24) => {
+      const totalW = cols * cardW + (cols - 1) * gapX;
+      const startX = centerX - totalW / 2;
+      const coords: { x: number; y: number }[] = [];
+      for (let i = 0; i < items; i++) {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const x = startX + col * (cardW + gapX);
+        const yy = y + row * (cardH + 24);
+        coords.push({ x, y: yy });
+      }
+      return coords;
+    };
+    const layoutColumn = (items: number, centerY: number, x: number, rowsPerCol = 5, gapY = 18, gapCol = 30) => {
+      const cols = Math.ceil(items / rowsPerCol);
+      const totalW = cols * cardW + (cols - 1) * gapCol;
+      const startX = x - totalW / 2;
+      const coords: { x: number; y: number }[] = [];
+      for (let i = 0; i < items; i++) {
+        const col = Math.floor(i / rowsPerCol);
+        const row = i % rowsPerCol;
+        const xi = startX + col * (cardW + gapCol);
+        const topY = centerY - ((rowsPerCol * cardH + (rowsPerCol - 1) * gapY) / 2);
+        const yi = topY + row * (cardH + gapY);
+        coords.push({ x: xi, y: yi });
+      }
+      return coords;
+    };
+
+    // Positions for skills
+    const progPos = layoutRow(technicalSkills.programming.length, 5, cx, anchors.programming.y - 120, 28);
+    const semiPos = layoutRow(technicalSkills.semiconductor.length, 5, cx, anchors.semiconductor.y + 40, 30);
+    const testPos = layoutColumn(technicalSkills.testing.length, cy, anchors.testing.x + 160, 5, 26, 34);
+    const qualPos = layoutColumn(technicalSkills.quality.length, cy, anchors.quality.x - 160, 5, 26, 34);
+
+    // Orthogonal elbow connector
+    const orthPath = (sx: number, sy: number, tx: number, ty: number, mode: 'vh' | 'hv') => {
+      if (mode === 'vh') {
+        return `M ${sx} ${sy} L ${sx} ${ty} L ${tx} ${ty}`;
+      }
+      return `M ${sx} ${sy} L ${tx} ${sy} L ${tx} ${ty}`;
+    };
+
+    const renderSkillNode = (x: number, y: number, skill: any, category: 'semiconductor' | 'testing' | 'programming' | 'quality') => {
+      const label: string = typeof skill === 'string' ? skill : skill.label;
+      const keyForImage: string = typeof skill === 'string' ? skill : skill.key;
+      const url = getSkillImage(keyForImage || label);
+      const id = `node-${category}-${normalizeToBase(keyForImage || label)}`;
+      return (
+        <g key={id} transform={`translate(${x}, ${y})`}>
+          {/* Soft halo behind icon */}
+          <circle cx={cardW / 2} cy={28} r={28} fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.25)" />
+          {/* Icon - larger for visibility */}
+          {url ? (
+            <image href={url} x={cardW / 2 - 22} y={2} width={44} height={44} preserveAspectRatio="xMidYMid meet" />
+          ) : (
+            <foreignObject x={cardW / 2 - 22} y={2} width={44} height={44}>
+              <div className="w-11 h-11 flex items-center justify-center">
+                {getBrandIcon(label) ?? getSkillIcon(category, label)}
+              </div>
+            </foreignObject>
+          )}
+          {/* Label */}
+          <text x={cardW / 2} y={78} textAnchor="middle" fill="#111827" fontSize="15" fontWeight="800">{label}</text>
+        </g>
+      );
+    };
+
+    return (
+      <svg viewBox={`0 0 ${width} ${height}`} className="hidden md:block w-full h-[1100px]">
+        <defs>
+          <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+            <rect width="24" height="24" fill="rgba(2,6,23,0.01)" />
+            <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(99,102,241,0.05)" strokeWidth="1" />
+          </pattern>
+          <filter id="ds" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="rgba(0,0,0,0.35)" />
+          </filter>
+          <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,5 L7,2.5 z" fill="rgba(99,102,241,0.6)" />
+          </marker>
+        </defs>
+
+        {/* background */}
+        <rect x={0} y={0} width={width} height={height} fill="url(#grid)" />
+
+        {/* Central node */}
+        <circle cx={cx} cy={cy} r={64} fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.5)" filter="url(#ds)" />
+        <text x={cx} y={cy + 6} textAnchor="middle" fontSize="20" fontWeight="800" fill="rgb(249,250,251)">Skills</text>
+
+        {/* Category labels */}
+        {(['programming','testing','semiconductor','quality'] as const).map((key) => {
+          const labelMap: Record<typeof key, string> = {
+            programming: t('skills.programming'),
+            testing: t('skills.testing'),
+            semiconductor: t('skills.semiconductor'),
+            quality: t('skills.quality'),
+          } as any;
+          const a = anchors[key];
+          const w = 240, h = 52, rx = 10;
+          return (
+            <g key={key}>
+              <rect x={a.x - w/2} y={a.y - h/2} rx={rx} ry={rx} width={w} height={h} fill="rgba(17,24,39,0.88)" stroke="rgba(99,102,241,0.5)" filter="url(#ds)" />
+              <text x={a.x} y={a.y + 6} textAnchor="middle" fontSize="15" fontWeight="800" fill="rgb(248,250,252)">{labelMap[key]}</text>
+            </g>
+          );
+        })}
+
+        {/* Orthogonal branches from center to categories */}
+        <path d={orthPath(cx, cy - 68, anchors.programming.x, anchors.programming.y + 24, 'vh')} stroke="rgba(99,102,241,0.5)" strokeWidth={2} fill="none" markerEnd="url(#arrow)" />
+        <path d={orthPath(cx + 76, cy, anchors.testing.x - 120, anchors.testing.y, 'hv')} stroke="rgba(99,102,241,0.5)" strokeWidth={2} fill="none" markerEnd="url(#arrow)" />
+        <path d={orthPath(cx, cy + 68, anchors.semiconductor.x, anchors.semiconductor.y - 24, 'vh')} stroke="rgba(99,102,241,0.5)" strokeWidth={2} fill="none" markerEnd="url(#arrow)" />
+        <path d={orthPath(cx - 76, cy, anchors.quality.x + 120, anchors.quality.y, 'hv')} stroke="rgba(99,102,241,0.5)" strokeWidth={2} fill="none" markerEnd="url(#arrow)" />
+
+        {/* Sub-branches to skill nodes */}
+        {progPos.map((p, i) => (
+          <g key={`p-${i}`}>
+            <path d={orthPath(anchors.programming.x, anchors.programming.y - 22, p.x + cardW/2, p.y + cardH, 'vh')} stroke="rgba(99,102,241,0.4)" strokeWidth={1.5} fill="none" markerEnd="url(#arrow)" />
+            {renderSkillNode(p.x, p.y, technicalSkills.programming[i], 'programming')}
+          </g>
+        ))}
+        {testPos.map((p, i) => (
+          <g key={`t-${i}`}>
+            <path d={orthPath(anchors.testing.x + 120, anchors.testing.y, p.x, p.y + cardH/2, 'hv')} stroke="rgba(99,102,241,0.4)" strokeWidth={1.5} fill="none" markerEnd="url(#arrow)" />
+            {renderSkillNode(p.x, p.y, technicalSkills.testing[i], 'testing')}
+          </g>
+        ))}
+        {semiPos.map((p, i) => (
+          <g key={`s-${i}`}>
+            <path d={orthPath(anchors.semiconductor.x, anchors.semiconductor.y + 22, p.x + cardW/2, p.y, 'vh')} stroke="rgba(99,102,241,0.4)" strokeWidth={1.5} fill="none" markerEnd="url(#arrow)" />
+            {renderSkillNode(p.x, p.y, technicalSkills.semiconductor[i], 'semiconductor')}
+          </g>
+        ))}
+        {qualPos.map((p, i) => (
+          <g key={`q-${i}`}>
+            <path d={orthPath(anchors.quality.x - 120, anchors.quality.y, p.x + cardW, p.y + cardH/2, 'hv')} stroke="rgba(99,102,241,0.4)" strokeWidth={1.5} fill="none" markerEnd="url(#arrow)" />
+            {renderSkillNode(p.x, p.y, technicalSkills.quality[i], 'quality')}
+          </g>
+        ))}
+      </svg>
+    );
+  };
+
+  // Clean showcase tiles (simple, professional)
+  const SkillTile = (category: 'semiconductor' | 'testing' | 'programming' | 'quality', item: { key: string; label: string }) => {
+    const url = getSkillImage(item.key);
+    const fallback = getBrandIcon(item.label) ?? getSkillIcon(category, item.label);
+    return (
+      <div key={`${category}-${item.key}`} className="flex flex-col items-center justify-start p-3 rounded-lg bg-card/70 border border-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-colors">
+        <div className="h-32 w-32 rounded-md bg-background/60 flex items-center justify-center overflow-hidden shadow-sm">
+          {url ? <img src={url} alt="" className="h-32 w-32 object-contain" /> : fallback}
+        </div>
+        <span className="mt-2 text-sm font-medium text-foreground text-center">{item.label}</span>
+      </div>
+    );
   };
 
   const experience = [
     {
-      title: language === 'en' ? 'AI Engineer (Working Student)' : 'Forschungsingenieur (Werkstudentin)',
+      title: language === 'en' ? 'AI Engineer (Working Student)' : 'KI-Ingenieur (Werkstudentin)',
       company: 'Infineon Technologies',
       period: language === 'en' ? 'October 2025 - Present' : 'Oktober 2025 - Heute',
       location: 'Regensburg, Germany',
       responsibilities: language === 'en' ? [
-        'Supporting AI scouting initiatives for Backend development, focusing on evaluating emerging technologies and automation opportunities.',
-        'Gained hands-on experience with AI tools for data analysis, project exploration and identifying potential development topics in early-stage semiconductor projects.',
-      
-      ] : ['Unterstützte AI-Scouting-Initiativen im Bereich Backend-Entwicklung, indem wir sich auf die Bewertung von neuartigen Technologien und Automatisierungschancen konzentrierten.',
-        'Erstehandige Praxiserfahrung mit AI-Tools für Datenanalyse, Projekt-Erkundenung und Identifizierung von potenziellen Entwicklungsaufgaben in frühstadien semikondutktorbasierten Projekten.',
+        'Supporting pre-development and early research phases by conducting AI-driven technology scouting for backend development, leveraging tools such as MapEGY, Findest, and other analytical platforms.',
+        'Performing systematic evaluation of emerging technologies, automation potentials, and innovation trends to identify high-value development opportunities in early-stage semiconductor projects.',
+        'Utilizing advanced AI tools for data analysis, topic exploration, and evidence-based insights, enabling the consolidation of critical information into structured summaries for efficient decision-making and streamlined research activities.',
+        'Contributing to reducing the exploratory workload of development teams by delivering comprehensive landscape analyses, improving the clarity and accessibility of technical information ahead of project initiation.'
+      ] : [
+        'Unterstützung von Vorentwicklung und frühen Forschungsphasen durch KI-gestütztes Technology-Scouting für die Backend-Entwicklung; Einsatz von Tools wie MapEGY, Findest und weiteren Analyseplattformen.',
+        'Systematische Bewertung aufkommender Technologien, Automatisierungspotenziale und Innovationstrends zur Identifikation wertschöpfender Entwicklungschancen in frühphasigen Halbleiterprojekten.',
+        'Nutzung fortgeschrittener KI-Werkzeuge für Datenanalyse, Themenexploration und evidenzbasierte Erkenntnisse; Verdichtung kritischer Informationen zu strukturierten Zusammenfassungen für effiziente Entscheidungen und schlanke Forschungsaktivitäten.',
+        'Beitrag zur Reduzierung des explorativen Aufwands der Entwicklungsteams durch umfassende Landscape-Analysen; Verbesserung der Klarheit und Zugänglichkeit technischer Informationen vor Projektstart.'
       ]
     },
     {
@@ -402,12 +879,27 @@ const PortfolioContent = () => {
             <p className="text-xl md:text-2xl title-text mb-4 font-semibold">
               {t('hero.subtitle')}
             </p>
-            <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto md:whitespace-nowrap">
               {t('hero.description')}
             </p>
-            <p className="text-base md:text-lg text-secondary-foreground mb-8 max-w-2xl mx-auto">
-              {t('hero.company')}
-            </p>
+            {/* Company/role with logos */}
+            <p className="sr-only">{t('hero.company')}</p>
+            <div className="flex items-center justify-center gap-3 mb-8 max-w-2xl mx-auto">
+              <span className="text-base md:text-lg text-secondary-foreground">
+                {language === 'en' ? 'AI Engineer at' : 'KI-Ingenieur bei'}
+              </span>
+              <img
+                src={infineonLogo}
+                alt="Infineon Technologies"
+                className="h-10 md:h-12 w-auto object-contain"
+              />
+              <span className="text-muted-foreground">|</span>
+              <img
+                src={boschLogo}
+                alt="Bosch"
+                className="h-10 md:h-12 w-auto object-contain"
+              />
+            </div>
 
             {/* Social Links */}
             <div className="flex justify-center space-x-6 mb-12">
@@ -478,14 +970,10 @@ const PortfolioContent = () => {
               {t('about.description')}
             </p>
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
                 <div className="text-4xl font-bold heading-primary mb-2">5</div>
                 <div className="text-muted-foreground font-medium">{language === 'en' ? 'Years Experience' : 'Jahre Erfahrung'}</div>
-              </div>
-              <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
-                <div className="text-4xl font-bold heading-secondary mb-2">2</div>
-                <div className="text-muted-foreground font-medium">{language === 'en' ? 'Top Companies' : 'Top-Unternehmen'}</div>
               </div>
               <div className="text-center p-6 rounded-lg bg-secondary/80 border border-primary/10 hover:border-primary/30 transition-all hover-lift card">
                 <div className="text-4xl font-bold heading-primary mb-2">4</div>
@@ -511,71 +999,60 @@ const PortfolioContent = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Semiconductor Skills */}
-            <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
-              <CardHeader className="text-center">
-                <Zap className="w-12 h-12 text-accent-baby-pink mx-auto mb-4" />
-                <CardTitle className="heading-secondary">{t('skills.semiconductor')}</CardTitle>
+          {/* Professional skills showcase (no graph) */}
+          <div className="space-y-10">
+            <Card className="gradient-border bg-secondary/90 card">
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Zap className="w-6 h-6 text-accent-baby-pink" />
+                  <CardTitle className="heading-secondary">{t('skills.semiconductor')}</CardTitle>
+                </div>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
-                  {technicalSkills.semiconductor.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 text-center bg-secondary/80 text-secondary-foreground hover:bg-primary/10 transition-colors">
-                      {skill}
-                    </Badge>
-                  ))}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                  {technicalSkills.semiconductor.map((item) => SkillTile('semiconductor', item))}
                 </div>
               </CardContent>
             </Card>
 
-            {/* Testing Skills */}
-            <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
-              <CardHeader className="text-center">
-                <Shield className="w-12 h-12 text-accent-soft-grey mx-auto mb-4" />
-                <CardTitle className="heading-secondary">{t('skills.testing')}</CardTitle>
+            <Card className="gradient-border bg-secondary/90 card">
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Shield className="w-6 h-6 text-accent-soft-grey" />
+                  <CardTitle className="heading-secondary">{t('skills.testing')}</CardTitle>
+                </div>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
-                  {technicalSkills.testing.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 text-center bg-secondary/80 text-secondary-foreground hover:bg-accent/10 transition-colors">
-                      {skill}
-                    </Badge>
-                  ))}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                  {technicalSkills.testing.map((item) => SkillTile('testing', item))}
                 </div>
               </CardContent>
             </Card>
 
-            {/* Programming Skills */}
-            <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
-              <CardHeader className="text-center">
-                <Code className="w-12 h-12 text-primary mx-auto mb-4" />
-                <CardTitle className="heading-secondary">{t('skills.programming')}</CardTitle>
+            <Card className="gradient-border bg-secondary/90 card">
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Code className="w-6 h-6 text-primary" />
+                  <CardTitle className="heading-secondary">{t('skills.programming')}</CardTitle>
+                </div>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
-                  {technicalSkills.programming.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 text-center bg-secondary/80 text-secondary-foreground hover:bg-primary/10 transition-colors">
-                      {skill}
-                    </Badge>
-                  ))}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+                  {technicalSkills.programming.map((item) => SkillTile('programming', item))}
                 </div>
               </CardContent>
             </Card>
 
-            {/* Quality Skills */}
-            <Card className="gradient-border hover-lift bg-secondary/90 backdrop-blur-sm card">
-              <CardHeader className="text-center">
-                <Database className="w-12 h-12 text-accent-light-pink mx-auto mb-4" />
-                <CardTitle className="heading-secondary">{t('skills.quality')}</CardTitle>
+            <Card className="gradient-border bg-secondary/90 card">
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Database className="w-6 h-6 text-accent-light-pink" />
+                  <CardTitle className="heading-secondary">{t('skills.quality')}</CardTitle>
+                </div>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
-                  {technicalSkills.quality.map((skill, index) => (
-                    <Badge key={index} variant="secondary" className="w-full justify-center py-2 text-center bg-secondary/80 text-secondary-foreground hover:bg-accent/10 transition-colors">
-                      {skill}
-                    </Badge>
-                  ))}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                  {technicalSkills.quality.map((item) => SkillTile('quality', item))}
                 </div>
               </CardContent>
             </Card>
@@ -598,7 +1075,7 @@ const PortfolioContent = () => {
               <Card key={index} className="gradient-border hover-lift h-full bg-secondary/90 card">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-4">
-                    <CardTitle className="text-xl heading-secondary">{project.title}</CardTitle>
+                  <CardTitle className="text-xl heading-secondary">{project.title}</CardTitle>
                     <div className="flex flex-col items-end space-x-2">
                       <Badge variant={project.status === (language === 'en' ? 'Ongoing' : 'Laufend') ? "default" : "secondary"}>
                         {project.status}
@@ -651,12 +1128,21 @@ const PortfolioContent = () => {
                   {/* Content */}
                   <Card className="gradient-border hover-lift flex-1 bg-secondary/90 card">
                     <CardHeader>
-                      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                        <div>
-                          <CardTitle className="text-xl heading-secondary">{exp.title}</CardTitle>
-                          <CardDescription className="text-lg font-medium">
-                            {exp.company}
-                          </CardDescription>
+                      <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                        <div className="flex items-start gap-4">
+                          {getCompanyLogo(exp.company) && (
+                            <img
+                              src={getCompanyLogo(exp.company) as string}
+                              alt={`${exp.company} logo`}
+                              className="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 object-contain rounded-md flex-shrink-0"
+                            />
+                          )}
+                          <div>
+                            <CardTitle className="text-xl heading-secondary">{exp.title}</CardTitle>
+                            <CardDescription className="text-lg font-medium">
+                              {exp.company}
+                            </CardDescription>
+                          </div>
                         </div>
                         <div className="text-sm text-muted-foreground text-right">
                           <div className="flex items-center space-x-2">
@@ -703,8 +1189,18 @@ const PortfolioContent = () => {
               <Card key={index} className="gradient-border hover-lift bg-secondary/90 card">
                 <CardHeader>
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <GraduationCap className="w-6 h-6 text-primary" />
+                    <div className="flex items-center justify-center flex-shrink-0">
+                      {getInstitutionLogo(edu.institution) ? (
+                        <img
+                          src={getInstitutionLogo(edu.institution) as string}
+                          alt={`${edu.institution} logo`}
+                          className="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 object-contain rounded-md"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                          <GraduationCap className="w-6 h-6 text-primary" />
+                        </div>
+                      )}
                     </div>
                     <div className="flex-1">
                       <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
