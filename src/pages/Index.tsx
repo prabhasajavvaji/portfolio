@@ -137,6 +137,7 @@ const PortfolioContent = () => {
         S('labview', 'LabVIEW', 'LabVIEW'),
         S('html5', 'HTML', 'HTML'),
         S('c', 'C Programming', 'C‑Programmierung'),
+        S('knime', 'KNIME', 'KNIME'),
       ],
       quality: [
         S('fmea', 'FMEA (Failure Mode and Effects Analysis)', 'FMEA (Fehlermöglichkeits‑ und Einflussanalyse)'),
@@ -146,6 +147,7 @@ const PortfolioContent = () => {
         S('technical-documentation', 'Technical Documentation', 'Technische Dokumentation'),
         S('production-defect-capa', 'Production defect analysis and corrective action processes', 'Produktionsfehleranalyse und Korrekturmaßnahmen'),
         S('quality-audits', 'Experience in Internal/External Quality and Technical Audits', 'Erfahrung mit internen/externen Qualitäts‑ und Technik‑Audits'),
+        S('8d', '8D (Eight Disciplines Problem Solving)', '8D (Acht‑Disziplinen‑Problemlösung)'),
       ]
     };
   };
@@ -167,6 +169,7 @@ const PortfolioContent = () => {
       if (/html/i.test(skill)) return <Code className={cls} />;
       if (/^c(\s|$)/i.test(skill)) return <Braces className={cls} />;
       if (/confluence/i.test(skill)) return <BookText className={cls} />;
+      if (/knime/i.test(skill)) return <GitBranch className={cls} />;
       return <Code2 className={cls} />;
     }
 
@@ -195,6 +198,7 @@ const PortfolioContent = () => {
 
     // quality
     if (/fmea/i.test(skill)) return <AlertTriangle className={cls} />;
+    if (/^8d/i.test(skill)) return <ClipboardList className={cls} />;
     if (/mrb/i.test(skill)) return <ClipboardList className={cls} />;
     if (/statistical|spc/i.test(skill)) return <BarChart3 className={cls} />;
     if (/root cause/i.test(skill)) return <Search className={cls} />;
@@ -278,6 +282,7 @@ const PortfolioContent = () => {
     'labview': 'labview',
     'html': 'html5',
     'c-programming': 'c',
+    'knime': 'knime',
     // Quality
     'fmea-failure-mode-and-effects-analysis': 'fmea',
     'mrb-process-material-review-board': 'mrb',
@@ -286,6 +291,7 @@ const PortfolioContent = () => {
     'technical-documentation': 'technical-documentation',
     'production-defect-analysis-and-corrective-action-processes': 'production-defect-capa',
     'experience-in-internal-external-quality-and-technical-audits': 'quality-audits',
+    '8d-eight-disciplines-problem-solving': '8d',
     // Project tech (for future use)
     'die-attach-process': 'die-attach-process',
     'materials-research': 'materials-research',
@@ -576,7 +582,7 @@ const PortfolioContent = () => {
     {
       title: language === 'en' ? 'AI Engineer (Working Student)' : 'KI-Ingenieur (Werkstudentin)',
       company: 'Infineon Technologies',
-      period: language === 'en' ? 'October 2025 - Present' : 'Oktober 2025 - Heute',
+      period: language === 'en' ? 'October 2025 - July 2026' : 'Oktober 2025 - Juli 2026',
       location: 'Regensburg, Germany',
       responsibilities: language === 'en' ? [
         'Supporting pre-development and early research phases by conducting AI-driven technology scouting for backend development, leveraging tools such as MapEGY, Findest, and other analytical platforms.',
@@ -697,10 +703,10 @@ const PortfolioContent = () => {
 
   const education = [
     {
-      degree: language === 'en' ? 'Master of Technology' : 'Master of Technology',
+      degree: language === 'en' ? 'Master of Engineering' : 'Master of Engineering',
       field: language === 'en' ? 'Electrical and Microsystems Engineering' : 'Elektrotechnik und Mikrosystemtechnik',
       institution: 'Ostbayerische Technische Hochschule (OTH)',
-      period: language === 'en' ? 'March 2023 - Present' : 'März 2023 - Heute',
+      period: language === 'en' ? 'March 2023 - July 2026' : 'März 2023 - Juli 2026',
       location: 'Regensburg, Germany',
       focus: language === 'en' ? 'Optoelectronics, Advanced Semiconductor Technologies' : 'Optoelektronik, Fortgeschrittene Halbleitertechnologien'
     },
@@ -885,9 +891,6 @@ const PortfolioContent = () => {
             {/* Company/role with logos */}
             <p className="sr-only">{t('hero.company')}</p>
             <div className="flex items-center justify-center gap-3 mb-8 max-w-2xl mx-auto">
-              <span className="text-base md:text-lg text-secondary-foreground">
-                {language === 'en' ? 'AI Engineer at' : 'KI-Ingenieur bei'}
-              </span>
               <img
                 src={infineonLogo}
                 alt="Infineon Technologies"
